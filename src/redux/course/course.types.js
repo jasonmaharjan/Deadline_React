@@ -1,0 +1,5 @@
+export const CourseActionTypes = {
+   TOGGLE_STATUS: 'TOGGLE_STATUS',
+   ADD_DEADLINE: 'ADD_DEADLINE',
+   REMOVE_DEADLINE: 'REMOVE_DEADLINE'
+}

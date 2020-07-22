@@ -1,7 +1,10 @@
 import React from 'react';
 import Form from '../../components/form/form.component';
-import CustomButton from '../../components/button/button.component';
 import './setdeadline.styles.scss';
+
+import { connect } from 'react-redux';
+import { addDeadline_action } from '../../redux/course/course.actions';
+import { Link } from 'react-router-dom';
 
 
 class HomePage extends React.Component {
@@ -10,14 +13,13 @@ class HomePage extends React.Component {
 
       this.state = {
          course : '',
-         date: ''
+         date: '',
       }
    }
 
    handleChange = event => {
       const{name, value} = event.target;
       this.setState({ [name]: value});
-      console.log(this.state);
    }
 
    render() {
@@ -46,11 +48,24 @@ class HomePage extends React.Component {
                      required 
                   />                 
                </form>
-               < CustomButton type = "submit"> Submit </CustomButton>
+               < Link to = "/view_deadline">
+                  <button className = "button" onClick = {
+                     () => {
+                        addDeadline_action(this.state);
+                        console.log(this.state);
+                     }
+                  }>
+                   SUBMIT
+                  </button>
+               </Link>
             </section>
          </div>
       );
    }
 }
 
-export default HomePage;
+const MapDispatchToProps = dispatch => ({
+   addDeadline_action: item => dispatch(addDeadline_action(item))
+});
+
+export default connect(null, MapDispatchToProps)(HomePage);
