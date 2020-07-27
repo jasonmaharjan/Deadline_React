@@ -2,18 +2,17 @@ import React from 'react';
 import Form from '../../components/form/form.component';
 import './setdeadline.styles.scss';
 
-import { connect } from 'react-redux';
-import { addDeadline_action } from '../../redux/course/course.actions';
-import { Link } from 'react-router-dom';
+import SetDeadlineAction from './setDeadline_action.component';
 
 
-class HomePage extends React.Component {
+class SetDeadline extends React.Component {
    constructor (props) {
       super (props);
 
       this.state = {
          course : '',
          date: '',
+         status: false
       }
    }
 
@@ -29,7 +28,7 @@ class HomePage extends React.Component {
                Set your Deadline here:
             </h1>
             <section className = "content">
-               <form className = "form"  onSubmit = {this.handleSubmit}>
+               <form className = "form">
                   <Form 
                      name = "course"
                      type = "string"
@@ -48,24 +47,13 @@ class HomePage extends React.Component {
                      required 
                   />                 
                </form>
-               < Link to = "/view_deadline">
-                  <button className = "button" onClick = {
-                     () => {
-                        addDeadline_action(this.state);
-                        console.log(this.state);
-                     }
-                  }>
-                   SUBMIT
-                  </button>
-               </Link>
+               
+               <SetDeadlineAction item = {this.state}/>
+               
             </section>
          </div>
       );
    }
 }
 
-const MapDispatchToProps = dispatch => ({
-   addDeadline_action: item => dispatch(addDeadline_action(item))
-});
-
-export default connect(null, MapDispatchToProps)(HomePage);
+export default SetDeadline;
