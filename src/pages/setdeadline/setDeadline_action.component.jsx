@@ -3,15 +3,13 @@ import './setdeadline.styles.scss';
 
 import { connect } from 'react-redux';
 import { addDeadline_action } from '../../redux/course/course.actions';
-import { Link } from 'react-router-dom';
+
 
 const SetDeadlineAction = ({item, addDeadline_action}) => {
    return (
-      < Link to = "/view_deadline">
-         <button className = "button" onClick = {() => {addDeadline_action(item)}}>
+         <button className = "button" type = "submit" onClick = {() => {addDeadline_action(item)}}>
             SUBMIT
          </button>
-      </Link>
    );
 }
 

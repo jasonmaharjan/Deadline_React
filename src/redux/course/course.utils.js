@@ -6,7 +6,8 @@ export const removeDeadline = (deadlines, deadlineToRemove) => {
    const existingDeadline = deadlines.find(
       deadline => deadline.id === deadlineToRemove.id
    )
-   // Filters out the deadlines that need to be removed
+
+   // Filters out the specified deadline from the array
    if (existingDeadline) {
       return deadlines.filter(deadline => deadline.id !== deadlineToRemove.id);
    }

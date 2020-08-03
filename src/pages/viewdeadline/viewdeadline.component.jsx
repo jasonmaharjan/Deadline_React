@@ -8,14 +8,15 @@ import DeadlineList from '../../components/deadline_list/deadline_list.component
 import './viewdeadline.styles.scss';
 
 const ViewDeadline = ({deadlines}) => {
+   
    return(
       <div className = "view">
          <div className = "title">
             View Your Deadlines here:
             {
                deadlines.length? (
-                  deadlines.map((deadline,index)=> 
-                  < DeadlineList key = {index} item = {deadline} />
+                  deadlines.map((deadline)=> 
+                  < DeadlineList key = {deadline.id} item = {deadline} />
                   )
                )
                :

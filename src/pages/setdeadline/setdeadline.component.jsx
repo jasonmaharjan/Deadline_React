@@ -12,13 +12,21 @@ class SetDeadline extends React.Component {
       this.state = {
          course : '',
          date: '',
-         status: false
+         id: '',
+         description: ''
       }
    }
 
    handleChange = event => {
       const{name, value} = event.target;
       this.setState({ [name]: value});
+      this.setState({id: Date.now()});
+   }
+
+   handleSubmit = event => {
+      event.preventDefault();
+      //this.setState({course:'', date:'', id:'', description: ''});
+      alert('Deadline Added!');
    }
 
    render() {
@@ -28,7 +36,7 @@ class SetDeadline extends React.Component {
                Set your Deadline here:
             </h1>
             <section className = "content">
-               <form className = "form">
+               <form className = "form" onSubmit = {this.handleSubmit}>
                   <Form 
                      name = "course"
                      type = "string"
@@ -45,11 +53,23 @@ class SetDeadline extends React.Component {
                      handleChange = {this.handleChange}
                      label = "set date :"
                      required 
-                  />                 
-               </form>
-               
-               <SetDeadlineAction item = {this.state}/>
-               
+                  />  
+
+                  <Form 
+                     name = "description"
+                     type = "textbox"
+                     value = {this.state.description}
+                     handleChange = {this.handleChange}
+                     label = "Description: "
+                     required 
+                  />  
+
+                  {  (this.state.course) && (this.state.date) && (this.state.description)?
+                     <SetDeadlineAction item = {this.state} />
+                     :
+                     null             
+                  }
+               </form>               
             </section>
          </div>
       );
