@@ -1,30 +1,28 @@
 .deadline_list {
-   margin: 2.5rem 10rem;
+   margin: 2.5rem 20rem;
    border: 1px solid grey;
    padding: 3rem;
    position: relative;
+   font-weight: 400;
 }
 
 .course_title {
-   font-size: 2rem;
+   font-size: 2.15rem;
 }
 
 .course_deadline {
    font-size: 1.5rem;
-   margin-bottom: 1rem;
-   font-weight: 400;
-}
-
-.time_left {
-   margin-left: 2.5rem;
-   font-size: 1.5rem;
-   margin-bottom: 1rem;
-   font-weight: 300;
+   margin-bottom: 2rem;
 }
 
 .description {
    font-size: 1.25rem;
-   font-weight: 400;
+   margin-bottom: 2rem;
+}
+
+.time_left {
+   font-size: 1rem;
+   
 }
 
 .remove_icon {

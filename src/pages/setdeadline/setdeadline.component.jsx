@@ -12,8 +12,9 @@ class SetDeadline extends React.Component {
       this.state = {
          course : '',
          date: '',
+         time: '',
          id: '',
-         description: ''
+         description: '',
       }
    }
 
@@ -54,6 +55,15 @@ class SetDeadline extends React.Component {
                      label = "set date :"
                      required 
                   />  
+
+                  <Form
+                     name = "time"
+                     type = "time"
+                     value = {this.state.time}
+                     handleChange = {this.handleChange}
+                     label = "set time :"
+                     required
+                  />
 
                   <Form 
                      name = "description"

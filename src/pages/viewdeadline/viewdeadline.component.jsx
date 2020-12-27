@@ -16,7 +16,7 @@ const ViewDeadline = ({deadlines}) => {
             {
                deadlines.length? (
                   deadlines.map((deadline)=> 
-                  < DeadlineList key = {deadline.id} item = {deadline} />
+                  <DeadlineList key = {deadline.id} item = {deadline} />
                   )
                )
                :
