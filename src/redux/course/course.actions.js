@@ -13,3 +13,7 @@ export const removeDeadline_action = item => ({
    type: CourseActionTypes.REMOVE_DEADLINE,
    payload: item
 });
+
+export const sortDeadline_action = () => ({
+   type: CourseActionTypes.SORT_DEADLINE,
+})

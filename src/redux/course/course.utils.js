@@ -16,3 +16,30 @@ export const removeDeadline = (deadlines, deadlineToRemove) => {
       return deadlines;
    }
 }
+
+export const sortDeadline = (deadlines) => {
+   let length = deadlines.length;
+
+   // Add a dateTime for each deadline in the array
+   for (let i = 0; i< length; i++) {
+      let date = `${deadlines[i].date} ${deadlines[i].time}`
+      let dateTime = (new Date(date)).getTime(); // Epoch time
+      deadlines[i].dateTime = dateTime
+   }
+
+   // Bubble sort 
+   var swapp;   
+   do {
+      swapp = false;
+      for (var i = 0; i < length-1; i++) {
+         if (deadlines[i].dateTime > deadlines[i+1].dateTime) {
+            var temp = deadlines[i];
+            deadlines[i] = deadlines[i+1];
+            deadlines[i+1] = temp;
+            swapp = true;
+         }
+      }
+   } while(swapp);
+   console.log(deadlines)
+   return deadlines;
+};

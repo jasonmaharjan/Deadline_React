@@ -1,50 +1,12 @@
 import React from 'react';
 import './deadline_list.styles.scss';
+import TimeCalc from '../time_calc/time_calc.component';
 
 import {connect} from 'react-redux';
 import {removeDeadline_action} from '../../redux/course/course.actions';
 
 const DeadlineList = ({item, removeDeadline_action}) => {
-   const {course, date, time,  description} = item;   
-   var datee = `${date} ${time}`;
-
-   /* for refreshing timer
-   var calculateTime = setInterval(function() {
-      var now = Date.now();
-      
-      var date = new Date();
-      var x = date.getTime();
-
-      console.log(x);
-      
-   }, 1000);*/
-
-   var now = Date.now();
-   var deadline = new Date(datee);
-
-   const calculateDecimal = (time) => {
-      return (time - Math.floor(time));
-   };
-
-   if (deadline > now) {
-      var timeMS = deadline - now;
-      var timeDays = (((timeMS / 1000) / 60 / 60 ) / 24);
-      var x1 = calculateDecimal(timeDays);
-      
-      var timeHours = (x1 * 24);
-      var x2 = calculateDecimal(timeHours);
-
-      var timeMinutes = (x2 *60);
-      //var x3 = calculateDecimal(timeMinutes);
-
-      //var timeSeconds = (x3 *60);
-
-      var d = Math.floor(timeDays);
-      var h = Math.floor(timeHours);
-      var m = Math.floor(timeMinutes);
-      //var s = Math.floor(timeSeconds);
-   }
-
+   const {course, date, description} = item;   
 
    return(
    <section className = 'deadline_list'>
@@ -57,20 +19,9 @@ const DeadlineList = ({item, removeDeadline_action}) => {
       <div className = "description">
          Description: {description}
       </div>
-      <div className = "time_left">
-         Time Left: 
-         {
-            d?(d > 1)?<span> {d} days</span>: <span> {d} day</span>:null
-         } 
-         
-         {
-            h?(h > 1)?<span> {h} hours</span>: <span> {h} hour</span>:null
-         } 
-         
-         {
-            m?(m > 1)?<span> {m} minutes</span>: <span> {m} minute</span>:null
-         } 
-      </div>
+
+      <TimeCalc item = {item} />
+      
       <span className = "remove_icon" 
          onClick = {
             () => {

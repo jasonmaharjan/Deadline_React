@@ -4,7 +4,6 @@ import './setdeadline.styles.scss';
 
 import SetDeadlineAction from './setDeadline_action.component';
 
-
 class SetDeadline extends React.Component {
    constructor (props) {
       super (props);
@@ -26,7 +25,6 @@ class SetDeadline extends React.Component {
 
    handleSubmit = event => {
       event.preventDefault();
-      //this.setState({course:'', date:'', id:'', description: ''});
       alert('Deadline Added!');
    }
 
