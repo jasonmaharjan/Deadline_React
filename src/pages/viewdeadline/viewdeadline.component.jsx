@@ -6,19 +6,27 @@ import { sortDeadline_action } from '../../redux/course/course.actions';
 
 import DeadlineList from '../../components/deadline_list/deadline_list.component';
 
+import { useSpring, animated } from 'react-spring';
+
 import './viewdeadline.styles.scss';
 
 const ViewDeadline = ({deadlines, sortDeadline_action}) => {
+   const props = useSpring({
+      from: {opacity: 0},
+      opacity: 1
+   });
    return(
-      <div className = "view">
+      <animated.div className = "view" style = {props}>
          <div className = "title">
             View Your Deadlines here:
          </div>
-
-         <button className = "sort_button" onClick = {() => {sortDeadline_action()}}>
-            Sort
-         </button>
-
+            {
+               deadlines?
+               <button className = "sort_button" onClick = {() => {sortDeadline_action()}}>
+                  Sort
+               </button>
+               :null
+            }
             {
                deadlines.length? (
                   deadlines.map((deadline)=> 
@@ -30,8 +38,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action}) => {
                   No Deadlines yet!
                </div>
             }
-
-      </div>
+      </animated.div>
 )};
 
 const MapStateToProps = createStructuredSelector({

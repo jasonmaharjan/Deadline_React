@@ -1,87 +1,104 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Form from '../../components/form/form.component';
 import './setdeadline.styles.scss';
 
 import SetDeadlineAction from './setDeadline_action.component';
 
-class SetDeadline extends React.Component {
-   constructor (props) {
-      super (props);
+import { useSpring, animated } from 'react-spring';
 
-      this.state = {
-         course : '',
-         date: '',
-         time: '',
-         id: '',
-         description: '',
+const SetDeadline = () => {
+   const [course, setCourse] = useState('');
+   const [date, setDate] = useState('');
+   const [time, setTime] = useState('');
+   const [description, setDescription] = useState('');
+   const [id, setId] = useState('');
+   const item = {
+      course, date, time, id, description
+   }
+
+   const handleChange = event => {
+      const {name, value} = event.target;
+      switch(name) {
+         case 'course':
+            setCourse(value);
+            break;
+         case 'date':
+            setDate(value);
+            break;
+         case 'time':
+            setTime(value);
+            break;
+         case 'description':
+            setDescription(value);
+            break;
+         default:
+            console.log('form-fill')
       }
+      setId(Date.now());
    }
 
-   handleChange = event => {
-      const{name, value} = event.target;
-      this.setState({ [name]: value});
-      this.setState({id: Date.now()});
-   }
-
-   handleSubmit = event => {
+   const handleSubmit = event => {
       event.preventDefault();
       alert('Deadline Added!');
    }
 
-   render() {
-      return (
-         <div className = "setDeadline">
-            <h1 className = "title">
-               Set your Deadline here:
-            </h1>
-            <section className = "content">
-               <form className = "form" onSubmit = {this.handleSubmit}>
-                  <Form 
-                     name = "course"
-                     type = "string"
-                     value = {this.state.course}
-                     handleChange = {this.handleChange}
-                     label = "course :"
-                     required 
-                  />
+   const props = useSpring({
+      from: {opacity: 0},
+      opacity: 1
+   });
 
-                  <Form 
-                     name = "date"
-                     type = "date"
-                     value = {this.state.date}
-                     handleChange = {this.handleChange}
-                     label = "set date :"
-                     required 
-                  />  
+   return (
+      <animated.div className = "setDeadline" style = {props}>
+         <h1 className = "title">
+            Set your Deadline here:
+         </h1>
+         <section className = "content">
+            <form className = "form" onSubmit = {handleSubmit}>
+               <Form 
+                  name = "course"
+                  type = "string"
+                  value = {course}
+                  handleChange = {handleChange}
+                  label = "course :"
+                  required 
+               />
 
-                  <Form
-                     name = "time"
-                     type = "time"
-                     value = {this.state.time}
-                     handleChange = {this.handleChange}
-                     label = "set time :"
-                     required
-                  />
+               <Form 
+                  name = "date"
+                  type = "date"
+                  value = {date}
+                  handleChange = {handleChange}
+                  label = "set date :"
+                  required 
+               />  
 
-                  <Form 
-                     name = "description"
-                     type = "textbox"
-                     value = {this.state.description}
-                     handleChange = {this.handleChange}
-                     label = "Description: "
-                     required 
-                  />  
+               <Form
+                  name = "time"
+                  type = "time"
+                  value = {time}
+                  handleChange = {handleChange}
+                  label = "set time :"
+                  required
+               />
 
-                  {  (this.state.course) && (this.state.date) && (this.state.description)?
-                     <SetDeadlineAction item = {this.state} />
-                     :
-                     null             
-                  }
-               </form>               
-            </section>
-         </div>
-      );
-   }
+               <Form 
+                  name = "description"
+                  type = "textbox"
+                  value = {description}
+                  handleChange = {handleChange}
+                  label = "Description: "
+                  required 
+               />  
+
+               {  (course) && (date) && (description)?
+                  <SetDeadlineAction item = {item} />
+                  :
+                  null             
+               }
+            </form>               
+         </section>
+      </animated.div>
+   );
 }
 
 export default SetDeadline;
