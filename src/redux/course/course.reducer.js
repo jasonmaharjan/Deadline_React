@@ -23,6 +23,8 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
          }
 
       case (CourseActionTypes.SORT_DEADLINE):
+
+         console.log(state.deadlines);
          return {
             ...state,
             deadlines: sortDeadline(state.deadlines)

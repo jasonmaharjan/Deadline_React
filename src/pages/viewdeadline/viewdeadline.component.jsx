@@ -9,7 +9,6 @@ import DeadlineList from '../../components/deadline_list/deadline_list.component
 import './viewdeadline.styles.scss';
 
 const ViewDeadline = ({deadlines, sortDeadline_action}) => {
-   
    return(
       <div className = "view">
          <div className = "title">

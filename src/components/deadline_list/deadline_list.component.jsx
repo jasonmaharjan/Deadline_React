@@ -1,5 +1,8 @@
 import React from 'react';
 import './deadline_list.styles.scss';
+import {createStructuredSelector} from 'reselect';
+import {selectDeadlines} from '../../redux/course/course.selectors';
+
 import TimeCalc from '../time_calc/time_calc.component';
 
 import {connect} from 'react-redux';
@@ -41,8 +44,14 @@ const RemoveDeadline = () => {
    } 
    else return false
 }
+
+const MapStateToProps = createStructuredSelector({
+   deadlines: selectDeadlines
+})
+
+
 const MapDispatchToProps = dispatch => ({
    removeDeadline_action: item => dispatch(removeDeadline_action(item))
 });
 
-export default connect(null, MapDispatchToProps)(DeadlineList);
+export default connect(MapStateToProps, MapDispatchToProps)(DeadlineList);
