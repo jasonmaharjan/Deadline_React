@@ -17,7 +17,7 @@ export const removeDeadline = (deadlines, deadlineToRemove) => {
    }
 }
 
-export const sortDeadline = (deadlines) => {
+export const sortDeadline = (deadlines, sortFlag) => {
    let length = deadlines.length;
 
    // Add a dateTime for each deadline in the deadlinesay
@@ -41,5 +41,6 @@ export const sortDeadline = (deadlines) => {
       }
    } while(swapp);
 
-   return [...deadlines];
+   if (sortFlag) return [...deadlines];
+   else return [...deadlines.reverse()];
 };

@@ -6,4 +6,3 @@ export const selectDeadlines = createSelector(
    [selectState],
    deadlines => deadlines.deadlines
 )
-

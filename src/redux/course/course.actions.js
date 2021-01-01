@@ -1,7 +1,7 @@
 import { CourseActionTypes } from './course.types';
 
-export const toggleStatus = () => ({
-   type: CourseActionTypes.TOGGLE_STATUS
+export const toggleSort = () => ({
+   type: CourseActionTypes.TOGGLE_SORT
 });
 
 export const addDeadline_action = item => ({

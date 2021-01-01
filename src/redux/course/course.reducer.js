@@ -4,7 +4,8 @@ import { removeDeadline } from './course.utils';
 import { sortDeadline } from './course.utils';
 
 const INITIAL_STATE = {
-   deadlines: []
+   deadlines: [],
+   sortFlag: true
 }
 
 const CourseReducer = (state = INITIAL_STATE, action) => {
@@ -21,13 +22,17 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
             ...state,
             deadlines: removeDeadline(state.deadlines, action.payload)
          }
-
-      case (CourseActionTypes.SORT_DEADLINE):
-
-         console.log(state.deadlines);
+      
+      case (CourseActionTypes.TOGGLE_SORT):
          return {
             ...state,
-            deadlines: sortDeadline(state.deadlines)
+            sortFlag: !state.sortFlag
+         }
+         
+      case (CourseActionTypes.SORT_DEADLINE):
+         return {
+            ...state,
+            deadlines: sortDeadline(state.deadlines, state.sortFlag),
          }
 
       default: 

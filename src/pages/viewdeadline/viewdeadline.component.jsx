@@ -1,7 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {createStructuredSelector} from 'reselect';
-import {selectDeadlines} from '../../redux/course/course.selectors';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectDeadlines } from '../../redux/course/course.selectors';
+import { toggleSort } from '../../redux/course/course.actions';
 import { sortDeadline_action } from '../../redux/course/course.actions';
 
 import DeadlineList from '../../components/deadline_list/deadline_list.component';
@@ -10,7 +11,7 @@ import { useSpring, animated } from 'react-spring';
 
 import './viewdeadline.styles.scss';
 
-const ViewDeadline = ({deadlines, sortDeadline_action}) => {
+const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort}) => {
    const props = useSpring({
       from: {opacity: 0},
       opacity: 1
@@ -22,7 +23,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action}) => {
          </div>
             {
                deadlines?
-               <button className = "sort_button" onClick = {() => {sortDeadline_action()}}>
+               <button className = "sort_button" onClick = {() => {toggleSort(); sortDeadline_action()}}>
                   Sort
                </button>
                :null
@@ -46,6 +47,7 @@ const MapStateToProps = createStructuredSelector({
 })
 
 const MapDispatchToProps = dispatch => ({
+   toggleSort: () => dispatch(toggleSort()),
    sortDeadline_action: () => dispatch(sortDeadline_action())
 })
 
