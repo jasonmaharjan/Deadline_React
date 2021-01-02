@@ -59,7 +59,7 @@ const TimeCalc = ({item}) => {
       )
    }
 
-   else return null;
+   else return 0;
 }
 
 export default TimeCalc;

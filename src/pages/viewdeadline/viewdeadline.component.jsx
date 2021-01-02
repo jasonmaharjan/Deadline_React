@@ -8,8 +8,11 @@ import TimeCalc from '../../components/time_calc/time_calc.component';
 import FlipMove from 'react-flip-move';
 import { useSpring, animated } from 'react-spring';
 
-import cross from "../../images/cross.png";
-import edit from "../../images/edit.png";
+import cross from "../../images/cross.svg";
+import edit from "../../images/edit.svg";
+import sort from "../../images/sort.svg";
+import redWarn from "../../images/red_warning.svg";
+import yellowWarn from "../../images/yellow_warning.svg";
 
 import './viewdeadline.styles.scss';
 
@@ -26,18 +29,30 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, removeDeadlin
       else return false
    }
 
-   const EditDeadline = () => {
+   const EditDeadline = (item) => {
+      console.log(item.dateTime - Date.now())
       alert("Editing in progress");
    }
-      
+   
+   // Individual Deadline
    const List = forwardRef(({item}, ref) => (
          <div ref={ref}>
             <div className = 'deadline_list'>
+               {
+                  (item.dateTime - Date.now())/1000 <= 86400 
+                  ? 
+                  <img src = {redWarn} className = "warn-icon" alt = "none" />
+                  :
+                  (item.dateTime - Date.now())/1000 <= 259200 && (item.dateTime - Date.now())/1000 > 86400
+                  ?
+                  <img src = {yellowWarn} className = "warn-icon" alt = "none" />
+                  :null
+               }
                <h1 className = "course_title">
                   {item.course}
                </h1>
                <div className = "course_deadline">
-                  Deadline: {item.date}
+                  Due: {item.date}
                </div>      
                <div className = "description">
                   Description: {item.description}
@@ -46,7 +61,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, removeDeadlin
                <span className = "edit_icon" 
                   onClick = {
                      () => {
-                        EditDeadline()
+                        EditDeadline(item)
                      }
                   }
                ><img src = {edit} className = "icon" alt = "none" />
@@ -67,9 +82,12 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, removeDeadlin
       <animated.div className = "view" style = {props}>
             {
                deadlines.length?
-               <button className = "sort_button" onClick = {() => {toggleSort(); sortDeadline_action()}}>
-                  Sort
-               </button>
+               <img 
+                  src = {sort} 
+                  className = "sort-icon" 
+                  onClick = {() => {toggleSort(); sortDeadline_action()}} 
+                  alt = "none"
+               />
                :null
             }
             <FlipMove>

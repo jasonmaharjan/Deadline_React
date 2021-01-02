@@ -1,13 +1,13 @@
 .setDeadline {
    padding: 3rem;
    height: 59.5vh;
-   background-color: #282c34a9;
-   color: white;
+   background-color: rgb(255, 255, 255);
+   color: rgb(0, 0, 0);
    padding: 10rem 14rem;
 }
 
 .setDeadline_title {
-   color: white;
+   color: rgb(0, 0, 0);
 }
 
 .content {
@@ -20,7 +20,9 @@
    grid-auto-rows: repeat(4, 1fr);
    grid-gap: 2rem;
    padding: 5rem;
-   border: 1px solid grey;
+   border-radius: 2rem;
+   border: 1px solid rgb(121, 121, 121);
+   box-shadow: 1px 2px 4px rgb(121, 121, 121);
 }
 
 .button {
@@ -28,8 +30,8 @@
    border: none;
    border-radius: .5rem;
    padding: .5rem 1.5rem;
-   border: 1px solid white;
-   color: white;
+   border: 1px solid rgb(0, 0, 0);
+   color: rgb(0, 0, 0);
    font-size: 1rem;
    width: 8rem;
    margin: 0 auto;
