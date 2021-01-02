@@ -1,5 +1,5 @@
 export const addDeadline = (deadlines, deadlineToAdd) => {
-   return [...deadlines, {...deadlineToAdd }]
+   return [...deadlines, {...deadlineToAdd }];
 }
 
 export const removeDeadline = (deadlines, deadlineToRemove) => {

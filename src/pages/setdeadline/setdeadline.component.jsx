@@ -44,7 +44,11 @@ const SetDeadline = () => {
 
    const props = useSpring({
       from: {opacity: 0},
-      opacity: 1
+      opacity: 1,
+   });
+
+   const formSpring = useSpring({
+      config: {mass: 1, tension: 170, friction:26}
    });
 
    return (
@@ -53,13 +57,13 @@ const SetDeadline = () => {
             Set your Deadline here:
          </h1>
          <section className = "content">
-            <form className = "form" onSubmit = {handleSubmit}>
+            <form className = "form" onSubmit = {handleSubmit} style = {formSpring}>
                <Form 
                   name = "course"
                   type = "string"
                   value = {course}
                   handleChange = {handleChange}
-                  label = "course :"
+                  label = "Title :"
                   required 
                />
 
@@ -68,7 +72,7 @@ const SetDeadline = () => {
                   type = "date"
                   value = {date}
                   handleChange = {handleChange}
-                  label = "set date :"
+                  label = "Set date :"
                   required 
                />  
 
@@ -77,7 +81,7 @@ const SetDeadline = () => {
                   type = "time"
                   value = {time}
                   handleChange = {handleChange}
-                  label = "set time :"
+                  label = "Set time :"
                   required
                />
 
@@ -97,6 +101,7 @@ const SetDeadline = () => {
                }
             </form>               
          </section>
+
       </animated.div>
    );
 }
