@@ -52,7 +52,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, removeDeadlin
                   {item.course}
                </h1>
                <div className = "course_deadline">
-                  Due: {item.date}
+                  Deadline: {item.date}
                </div>      
                <div className = "description">
                   Description: {item.description}

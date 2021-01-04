@@ -12,8 +12,10 @@ const SetDeadline = () => {
    const [time, setTime] = useState('');
    const [description, setDescription] = useState('');
    const [id, setId] = useState('');
+   const dateTime = new Date(`${date} ${time}`);
+
    const item = {
-      course, date, time, id, description
+      course, date, time, id, description, dateTime
    }
 
    const handleChange = event => {

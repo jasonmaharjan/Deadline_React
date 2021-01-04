@@ -13,12 +13,6 @@ const HomePage = () => {
             <h1 className = "title">
                This is a very simple deadline tracker made from React using Redux for state management. 
             </h1>
-            <p className = "info">
-               Fill up a form for a deadline and see how much time u have left. 
-            </p>
-            <p className = "info">
-               You can sort the deadlines by ascending or descending order.
-            </p>
       </animated.div>
 )};
 
