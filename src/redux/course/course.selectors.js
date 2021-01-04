@@ -6,3 +6,8 @@ export const selectDeadlines = createSelector(
    [selectState],
    deadlines => deadlines.deadlines
 )
+
+export const selectEditFlag = createSelector(
+   [selectState],
+   deadlines => deadlines.editFlag
+)

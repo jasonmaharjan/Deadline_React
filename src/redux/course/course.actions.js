@@ -4,6 +4,10 @@ export const toggleSort = () => ({
    type: CourseActionTypes.TOGGLE_SORT
 });
 
+export const toggleEdit = () => ({
+   type: CourseActionTypes.TOGGLE_EDIT
+});
+
 export const addDeadline_action = item => ({
    type: CourseActionTypes.ADD_DEADLINE,
    payload: item
@@ -16,4 +20,4 @@ export const removeDeadline_action = item => ({
 
 export const sortDeadline_action = () => ({
    type: CourseActionTypes.SORT_DEADLINE,
-})
+});

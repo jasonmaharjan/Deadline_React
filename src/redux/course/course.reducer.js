@@ -5,7 +5,8 @@ import { sortDeadline } from './course.utils';
 
 const INITIAL_STATE = {
    deadlines: [],
-   sortFlag: true
+   sortFlag: true,
+   editFlag: false,
 }
 
 const CourseReducer = (state = INITIAL_STATE, action) => {
@@ -27,6 +28,12 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
          return {
             ...state,
             sortFlag: !state.sortFlag
+         }
+      
+      case (CourseActionTypes.TOGGLE_EDIT):
+         return {
+            ...state,
+            editFlag: !state.editFlag
          }
          
       case (CourseActionTypes.SORT_DEADLINE):

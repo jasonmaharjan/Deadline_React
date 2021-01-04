@@ -15,7 +15,8 @@
 }
 
 .deadline_list {
-   margin: 2.5rem 5vw;
+   position: fixed;
+   margin: 2.5rem 10vw;
    border-radius: 2rem;
    border: 1px solid rgb(121, 121, 121);
    box-shadow: 1px 2px 4px rgb(121, 121, 121);
@@ -86,6 +87,16 @@
 
 .icon {
    color: white;
+}
+
+.edit-form-overlay {
+   background-color: rgba(0, 0, 0, 0.5);
+   position: absolute;
+   margin-top: -1rem;
+   left: 0;
+   right: 0;
+   z-index: 10;
+   min-height: 100%;
 }
 
 @keyframes scaleIcon {
