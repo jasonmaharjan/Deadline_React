@@ -44,3 +44,9 @@ export const sortDeadline = (deadlines, sortFlag) => {
    if (sortFlag) return [...deadlines];
    else return [...deadlines.reverse()];
 };
+
+export const editDeadline = (deadlines, deadlineToEdit) => {
+   // deadlineToEdit[0] = old deadline
+   // deadlineToEdit[1] = new deadline
+   return [{...deadlineToEdit[1]}, ...deadlines.filter(deadline => deadline.id !== deadlineToEdit[0].id)];
+}

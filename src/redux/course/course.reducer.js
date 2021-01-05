@@ -1,6 +1,7 @@
 import { CourseActionTypes } from './course.types';
 import { addDeadline } from './course.utils';
 import { removeDeadline } from './course.utils';
+import { editDeadline } from './course.utils';
 import { sortDeadline } from './course.utils';
 
 const INITIAL_STATE = {
@@ -22,6 +23,12 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
          return {
             ...state,
             deadlines: removeDeadline(state.deadlines, action.payload)
+         }
+
+      case (CourseActionTypes.EDIT_DEADLINE): 
+         return {
+            ...state,
+            deadlines: editDeadline(state.deadlines, action.payload)
          }
       
       case (CourseActionTypes.TOGGLE_SORT):

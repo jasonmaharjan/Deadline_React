@@ -1,4 +1,4 @@
-import React, {forwardRef} from 'react';
+import React, { forwardRef } from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -19,6 +19,11 @@ import yellowWarn from "../../images/yellow_warning.svg";
 import './viewdeadline.styles.scss';
 
 const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, editFlag, removeDeadline_action}) => {
+   /*useEffect(() => {
+      console.log(editFlag);
+   },[editFlag]);*/
+
+
    const [deadlineToEdit, setDeadlineToEdit] = useState(null);
 
    const props = useSpring({
@@ -81,7 +86,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
    return(
       <animated.div className = "view" style = {props}>
          {
-            editFlag?
+            editFlag && deadlineToEdit?
             <div className = "edit-form-overlay">
                <EditForm item = {deadlineToEdit}/>
             </div>:null }

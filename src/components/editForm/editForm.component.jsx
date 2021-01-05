@@ -1,16 +1,17 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
-import SetDeadlineAction from '../../pages/setdeadline/setDeadline_action.component';
+
 import Form from '../../components/form/form.component';
+
 import { createStructuredSelector } from 'reselect';
+import { editDeadline_action } from '../../redux/course/course.actions';
 import { selectEditFlag } from '../../redux/course/course.selectors';
 import { toggleEdit } from '../../redux/course/course.actions';
 
 import './editForm.styles.scss';
 import cross from "../../images/cross.svg";
 
-const EditForm = ({item, toggleEdit, editFlag}) => {
-   console.log(editFlag);
+const EditForm = ({item, toggleEdit, editFlag, editDeadline_action}) => {
    const [course, setCourse] = useState(item.course);
    const [date, setDate] = useState(item.date);
    const [time, setTime] = useState(item.time);
@@ -38,14 +39,19 @@ const EditForm = ({item, toggleEdit, editFlag}) => {
             setDescription(value);
             break;
          default:
-            console.log('form-fill')
+            console.log('edit-form-fill')
       }
-      setDateTime(`${date} ${time}`)
    }
 
-   const handleSubmit = event => {
+   const addDateTime = (date,time) => {
+      setDateTime(`${date} ${time}`);
+   }
+
+   const handleSubmit = (event) => {
       event.preventDefault();
+      addDateTime(date, time);
       alert('Deadline Updated!');
+      toggleEdit();
    }
 
    return (
@@ -91,11 +97,15 @@ const EditForm = ({item, toggleEdit, editFlag}) => {
                   required 
                />  
 
-               {  (course) && (date) && (description)?
-                  <SetDeadlineAction item = {updated_item} />
-                  :
-                  null             
-               }
+               <button className = "button" type = "submit" onClick = {() => 
+                     {
+                        updated_item ? editDeadline_action(item, updated_item)
+                        :
+                        alert("Please fill out the required information!")
+                     }
+                  }>
+                  SUBMIT
+               </button>
             </form>             
          :null}
       </section>
@@ -108,6 +118,7 @@ const MapStateToProps = createStructuredSelector({
 
 const MapDispatchToProps = dispatch => ({
    toggleEdit: () => dispatch(toggleEdit()),
+   editDeadline_action: (item, updatedItem) => dispatch(editDeadline_action(item, updatedItem))
 })
 
 export default connect(MapStateToProps, MapDispatchToProps)(EditForm);

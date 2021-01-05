@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import uuid from 'react-uuid';
 import Form from '../../components/form/form.component';
 import './setdeadline.styles.scss';
 
@@ -11,7 +12,8 @@ const SetDeadline = () => {
    const [date, setDate] = useState('');
    const [time, setTime] = useState('');
    const [description, setDescription] = useState('');
-   const [id, setId] = useState('');
+   //const [id, setId] = useState('');
+   const id = uuid();
    const dateTime = new Date(`${date} ${time}`);
 
    const item = {
@@ -36,7 +38,6 @@ const SetDeadline = () => {
          default:
             console.log('form-fill')
       }
-      setId(Date.now());
    }
 
    const handleSubmit = event => {

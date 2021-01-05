@@ -18,6 +18,11 @@ export const removeDeadline_action = item => ({
    payload: item
 });
 
+export const editDeadline_action = (item, updatedItem) => ({
+   type: CourseActionTypes.EDIT_DEADLINE,
+   payload: [item, updatedItem]
+});
+
 export const sortDeadline_action = () => ({
    type: CourseActionTypes.SORT_DEADLINE,
 });

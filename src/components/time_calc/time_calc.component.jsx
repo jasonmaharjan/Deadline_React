@@ -2,7 +2,8 @@ import React from 'react';
 import './time_calc.styles.scss';
 
 const TimeCalc = ({item}) => {
-   var deadline = item.dateTime;
+   var deadline = `${item.date} ${item.time}`;
+   deadline = new Date(deadline);
    var now = Date.now();
 
    const calculateDecimal = (time) => {
