@@ -12,9 +12,8 @@ const SetDeadline = () => {
    const [date, setDate] = useState('');
    const [time, setTime] = useState('');
    const [description, setDescription] = useState('');
-   //const [id, setId] = useState('');
    const id = uuid();
-   const dateTime = new Date(`${date} ${time}`);
+   const dateTime = new Date(`${date} ${time}`).getTime()
 
    const item = {
       course, date, time, id, description, dateTime

@@ -20,13 +20,6 @@ export const removeDeadline = (deadlines, deadlineToRemove) => {
 export const sortDeadline = (deadlines, sortFlag) => {
    let length = deadlines.length;
 
-   // Add a dateTime for each deadline in the deadlinesay
-   for (let i = 0; i< length; i++) {
-      let date = `${deadlines[i].date} ${deadlines[i].time}`
-      let dateTime = (new Date(date)).getTime(); // Epoch time
-      deadlines[i].dateTime = dateTime
-   }
-
    // Bubble sort 
    var swapp;   
    do {

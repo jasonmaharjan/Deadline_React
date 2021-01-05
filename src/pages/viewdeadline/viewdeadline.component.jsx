@@ -19,11 +19,6 @@ import yellowWarn from "../../images/yellow_warning.svg";
 import './viewdeadline.styles.scss';
 
 const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, editFlag, removeDeadline_action}) => {
-   /*useEffect(() => {
-      console.log(editFlag);
-   },[editFlag]);*/
-
-
    const [deadlineToEdit, setDeadlineToEdit] = useState(null);
 
    const props = useSpring({
@@ -37,7 +32,6 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
       } 
       else return false
    }
-   
    // Individual Deadline
    const List = forwardRef(({item}, ref) => (
          <div ref={ref}>
@@ -56,7 +50,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
                   {item.course}
                </h1>
                <div className = "course_deadline">
-                  Deadline: {item.date}
+                  Deadline: {item.date}&nbsp;&nbsp;{item.time} 
                </div>      
                <div className = "description">
                   Description: {item.description}
@@ -65,6 +59,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
                <span className = "edit_icon" 
                   onClick = {
                      () => {
+                        console.log(item.dateTime);
                         setDeadlineToEdit(item); 
                         toggleEdit();
                      }

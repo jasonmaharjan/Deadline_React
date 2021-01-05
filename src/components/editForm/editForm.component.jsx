@@ -17,7 +17,8 @@ const EditForm = ({item, toggleEdit, editFlag, editDeadline_action}) => {
    const [time, setTime] = useState(item.time);
    const [id] = useState(item.id);
    const [description, setDescription] = useState(item.description);
-   const [dateTime, setDateTime] = useState(item.dateTime);
+
+   const dateTime = new Date(`${date} ${time}`).getTime();
 
    const updated_item = {
       course, date, time, id, description, dateTime
@@ -43,13 +44,8 @@ const EditForm = ({item, toggleEdit, editFlag, editDeadline_action}) => {
       }
    }
 
-   const addDateTime = (date,time) => {
-      setDateTime(`${date} ${time}`);
-   }
-
    const handleSubmit = (event) => {
       event.preventDefault();
-      addDateTime(date, time);
       alert('Deadline Updated!');
       toggleEdit();
    }
