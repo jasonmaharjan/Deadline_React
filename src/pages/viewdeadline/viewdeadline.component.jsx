@@ -32,6 +32,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
       } 
       else return false
    }
+
    // Individual Deadline
    const List = forwardRef(({item}, ref) => (
          <div ref={ref}>
@@ -50,17 +51,38 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
                   {item.course}
                </h1>
                <div className = "course_deadline">
-                  Deadline: {item.date}&nbsp;&nbsp;{item.time} 
+                  Deadline: {item.date}&nbsp;&nbsp;&nbsp;&nbsp;
+                  {
+                     item.time[0]+item.time[1] > 12 ?
+                        <span> 
+                           {
+                              item.time[0]+item.time[1] - 12 
+                           }:{item.time.slice(3,5)}&nbsp;pm 
+                        </span>
+                     :
+                     item.time[0]+item.time[1] === "00" ?
+                        <span> 
+                           12:00&nbsp;am
+                        </span>
+                     :
+                     <span> 
+                        12:00&nbsp;pm
+                     </span>
+                  } 
                </div>      
+
                <div className = "description">
                   Description: {item.description}
                </div>
+
                <TimeCalc item = {item} />
+
                <span className = "edit_icon" 
                   onClick = {
                      () => {
                         console.log(item.dateTime);
                         setDeadlineToEdit(item); 
+                        window.scrollTo(0, 0);
                         toggleEdit();
                      }
                   }

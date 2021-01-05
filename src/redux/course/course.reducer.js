@@ -6,7 +6,7 @@ import { sortDeadline } from './course.utils';
 
 const INITIAL_STATE = {
    deadlines: [],
-   sortFlag: true,
+   sortFlag: false,
    editFlag: false,
 }
 
