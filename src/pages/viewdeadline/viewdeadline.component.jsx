@@ -5,6 +5,7 @@ import { createStructuredSelector } from 'reselect';
 import { selectDeadlines, selectEditFlag } from '../../redux/course/course.selectors';
 import { toggleSort, sortDeadline_action, removeDeadline_action, toggleEdit } from '../../redux/course/course.actions';
 import { useSpring, animated } from 'react-spring';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import TimeCalc from '../../components/time_calc/time_calc.component';
 import FlipMove from 'react-flip-move';
@@ -35,7 +36,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
 
    // Individual Deadline
    const List = forwardRef(({item}, ref) => (
-         <div ref={ref}>
+         <div className = 'list' ref={ref}>
             <div className = 'deadline_list'>
                {
                   (item.dateTime - Date.now())/1000 <= 86400 
@@ -130,6 +131,57 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
             </div>
          }
          </FlipMove>
+         
+         <DragDropContext onDragEnd = {result => console.log(result)}>
+            <Droppable droppableId = "deadlines">
+               {(provided, snapshot) => {
+                  return (
+                     <div
+                        {...provided.droppableProps} 
+                        ref = {provided.innerRef}
+                        style = {{
+                           background: snapshot.isDragginOver? 'lightblue': 'lightgrey',
+                           padding: 4,
+                           width: 400,
+                           minHeight: 350
+                        }}
+                     >
+                        {deadlines.map((deadline, index) => {
+                           return (
+                              <Draggable key = {deadline.id} draggableId = {deadline.id} index = {index}>
+                                 {(provided, snapshot) => {
+                                    return (
+                                       <div 
+                                          ref = {provided.innerRef}
+                                          {...provided.draggableProps}
+                                          {...provided.dragHandleProps}
+                                          style = {
+                                             {
+                                                userSelect: 'none',
+                                                padding: 16,
+                                                minHeight: '16px',
+                                                margin: '0 0 8px 0',
+                                                backgroundColor: snapshot.isDragging? '#263B4A': '#456C86',
+                                                color: 'white',
+                                                ...provided.draggableProps.style
+                                             }
+                                          }
+                                       >
+                                          {deadline.course}
+                                       </div>
+                                    );
+                                 }}
+                              </Draggable>
+                           );
+                        })}
+                        {provided.placeholder}
+                     </div>
+                  );
+               }
+               }
+            </Droppable>
+         </DragDropContext>
+
       </animated.div>
    );
 };
