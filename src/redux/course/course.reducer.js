@@ -3,6 +3,7 @@ import { addDeadline } from './course.utils';
 import { removeDeadline } from './course.utils';
 import { editDeadline } from './course.utils';
 import { sortDeadline } from './course.utils';
+import { sortDeadlineDND } from './course.utils';
 
 const INITIAL_STATE = {
    deadlines: [],
@@ -49,6 +50,12 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
             deadlines: sortDeadline(state.deadlines, state.sortFlag),
          }
 
+      case (CourseActionTypes.SORT_DEADLINE_DND):
+         return {
+            ...state,
+            deadlines: sortDeadlineDND(state.deadlines, action.payload),
+         }
+   
       default: 
          return state;
    }

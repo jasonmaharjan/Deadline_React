@@ -26,3 +26,8 @@ export const editDeadline_action = (item, updatedItem) => ({
 export const sortDeadline_action = () => ({
    type: CourseActionTypes.SORT_DEADLINE,
 });
+
+export const sortDeadlineDND_action = item => ({
+   type: CourseActionTypes.SORT_DEADLINE_DND,
+   payload: item
+});

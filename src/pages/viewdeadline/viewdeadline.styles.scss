@@ -3,6 +3,9 @@
    min-height: 65vh;
    background-color: #ffffff;
    color: rgb(0, 0, 0);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .message {
@@ -16,7 +19,7 @@
 
 .deadline_list {
    position: fixed;
-   margin: 2.5rem 10vw;
+   //margin: 2.5rem 10vw;
    border-radius: 2rem;
    //border: 1px solid rgb(121, 121, 121);
    box-shadow: 1px 2px 4px rgb(121, 121, 121);

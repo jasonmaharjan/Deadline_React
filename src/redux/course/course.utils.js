@@ -43,3 +43,14 @@ export const editDeadline = (deadlines, deadlineToEdit) => {
    // deadlineToEdit[1] = new deadline
    return [{...deadlineToEdit[1]}, ...deadlines.filter(deadline => deadline.id !== deadlineToEdit[0].id)];
 }
+
+export const sortDeadlineDND = (deadlines, result) => {
+   if(!result.destination) return deadlines;
+   else {
+      const { source, destination } = result;
+      const copiedItems = [...deadlines];
+      const [removed] = copiedItems.splice(source.index, 1); // return the removed item
+      copiedItems.splice(destination.index, 0, removed); // add the removed item with a new index to the list
+      return copiedItems;
+   }
+}

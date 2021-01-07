@@ -5,7 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import CourseReducer from './course/course.reducer';
 
 const persistConfig = {
-   key: 'deadline_tracker',
+   key: 'deadlineTracker',
    storage,
    whitelist: ['deadlines'] // as we want 'deadlines' reducer to be persistent
 }
