@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
-
-import Form from '../../components/form/form.component';
+import _ from 'lodash';
 
 import { createStructuredSelector } from 'reselect';
 import { editDeadline_action } from '../../redux/course/course.actions';
 import { selectEditFlag } from '../../redux/course/course.selectors';
 import { toggleEdit } from '../../redux/course/course.actions';
+import { Notification } from '../../components/notification/notification';
 
+import Form from '../../components/form/form.component';
 import './editForm.styles.scss';
 import cross from "../../images/cross.svg";
 
@@ -46,8 +47,17 @@ const EditForm = ({item, toggleEdit, editFlag, editDeadline_action}) => {
 
    const handleSubmit = (event) => {
       event.preventDefault();
-      alert('Deadline Updated!');
-      toggleEdit();
+      // Comparison using lodash
+      let comparison = _.isEqual(item, updated_item)
+      if (!comparison) {
+         Notification("success", "Deadline Updated!", "Your deadline has been updated");
+         toggleEdit();
+      }
+      else 
+         {
+            Notification("info", "Deadline Unchanged!", "Your deadline remains unchanged");
+            toggleEdit();
+         }
    }
 
    return (

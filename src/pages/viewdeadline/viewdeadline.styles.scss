@@ -1,6 +1,6 @@
 .view {
-   padding: 10rem 14rem;
-   min-height: 65vh;
+   padding: 20vh 14vw;
+   min-height: 100vh;
    background-color: #ffffff;
    color: rgb(0, 0, 0);
    display: flex;
@@ -11,7 +11,6 @@
 .icon-div {
    display: flex;
    justify-content: center;
-   //align-items: center;
 }
 
 .sort-icon {
@@ -114,7 +113,7 @@
 .edit-form-overlay {
    background-color: rgba(0, 0, 0, 0.5);
    position: absolute;
-   margin-top: -1rem;
+   margin-top: -1.55rem;
    left: 0;
    right: 0;
    z-index: 10;
@@ -127,7 +126,7 @@
    }
 
    50% {
-      transform: scale(1.10);
+      transform: scale(1.20);
    }
 
    100% {

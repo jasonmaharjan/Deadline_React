@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
+import { useSpring, animated } from 'react-spring';
 import uuid from 'react-uuid';
 import Form from '../../components/form/form.component';
-import './setdeadline.styles.scss';
+import { Notification } from '../../components/notification/notification';
 
 import SetDeadlineAction from './setDeadline_action.component';
 
-import { useSpring, animated } from 'react-spring';
+import './setdeadline.styles.scss';
 
 const SetDeadline = () => {
    const [course, setCourse] = useState('');
@@ -41,7 +42,7 @@ const SetDeadline = () => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      alert('Deadline Added!');
+      Notification("success", "Deadline Added!", "Your deadline has been added");
    }
 
    const props = useSpring({

@@ -89,7 +89,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
                                  borderRadius: '1rem',
                                  padding: 40,
                                  width: 800,
-                                 marginTop: '5rem'  
+                                 marginTop: '2rem'  
                               }}
                            >
                               {deadlines.map((deadline, index) => {
@@ -188,7 +188,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
             )
             :
             <div className = "message">
-               Hurray! You do not have any deadlines 
+               Hurray! You do not have any deadlines ...yet
             </div>
          }    
          

@@ -1,0 +1,10 @@
+import { notification } from 'antd';
+
+export const Notification = (type, message, description) => {
+   notification[type]({
+      message, 
+      description,
+      duration: 3,
+      placement: 'topRight'
+   })
+}

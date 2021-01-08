@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { connect } from 'react-redux';
 
 import Form from '../form/form.component';
+import { Notification } from '../notification/notification';
 
 import { createStructuredSelector } from 'reselect';
 import { selectSettingsFlag, selectSettings } from '../../redux/course/course.selectors';
@@ -38,7 +39,7 @@ const SettingsForm = ({ settings, settingsFlag, toggleSettings, editSettings_act
    const handleSubmit = (event) => {
       event.preventDefault();
       toggleSettings();
-      alert('Settings Updated!');
+      Notification("info", "Settings Applied", "Your settings have been applied");
    }
 
    return (
