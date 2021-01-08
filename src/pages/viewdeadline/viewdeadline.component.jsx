@@ -2,26 +2,32 @@ import React from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectDeadlines, selectEditFlag } from '../../redux/course/course.selectors';
+import { selectDeadlines, selectEditFlag, 
+         selectSettings, selectSettingsFlag } from '../../redux/course/course.selectors';
+
 import { toggleSort, sortDeadline_action, 
          removeDeadline_action, toggleEdit,
-         sortDeadlineDND_action } from '../../redux/course/course.actions';
+         sortDeadlineDND_action, 
+         toggleSettings } from '../../redux/course/course.actions';
+
 import { useSpring, animated } from 'react-spring';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import TimeCalc from '../../components/time_calc/time_calc.component';
 import EditForm from '../../components/editForm/editForm.component';
+import SettingsForm from '../../components/settingsForm/settingsForm.component';
 
 import cross from "../../images/cross.svg";
 import edit from "../../images/edit.svg";
 import sort from "../../images/sort.svg";
 import redWarn from "../../images/red_warning.svg";
 import yellowWarn from "../../images/yellow_warning.svg";
+import settingsIcon from "../../images/settings.svg";
 
 import './viewdeadline.styles.scss';
 
 const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, editFlag, 
-                        removeDeadline_action, sortDeadlineDND_action}) => {
+                        removeDeadline_action, sortDeadlineDND_action, settings, settingsFlag, toggleSettings}) => {
    const [deadlineToEdit, setDeadlineToEdit] = useState(null);
 
    const props = useSpring({
@@ -41,17 +47,32 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
          {
             editFlag && deadlineToEdit?
             <div className = "edit-form-overlay">
-               <EditForm item = {deadlineToEdit}/>
+               <EditForm item = {deadlineToEdit} />
+            </div>:null
+         }
+         {
+            settingsFlag && deadlines.length?
+            <div className = "edit-form-overlay">
+               <SettingsForm />
             </div>:null
          }
          {
             deadlines.length?
-            <img 
-               src = {sort} 
-               className = "sort-icon" 
-               onClick = {() => {toggleSort(); sortDeadline_action()}} 
-               alt = "none"
-            />
+            <div className = "icon-div">
+               <img 
+                  src = {sort} 
+                  className = "sort-icon" 
+                  onClick = {() => {toggleSort(); sortDeadline_action()}} 
+                  alt = "none"
+               />
+            
+               <img 
+                  src = {settingsIcon} 
+                  className = "settings-icon" 
+                  onClick = {() => {toggleSettings()}} 
+                  alt = "none"
+               />
+            </div>
             :null
          }
          {
@@ -59,7 +80,6 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
                <DragDropContext onDragEnd = {result => sortDeadlineDND_action(result)}>
                   <Droppable droppableId = "deadlines">
                      {(provided, snapshot) => {
-                        console.log(snapshot)
                         return (
                            <div
                               {...provided.droppableProps} 
@@ -93,11 +113,11 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
                                              >
                                                 <div className = 'deadline_list'>
                                                    {
-                                                      (deadline.dateTime - Date.now())/1000 <= 86400 
+                                                      (deadline.dateTime - Date.now())/1000 <= settings.redWarn
                                                       ? 
                                                       <img src = {redWarn} className = "warn-icon" alt = "none" />
                                                       :
-                                                      (deadline.dateTime - Date.now())/1000 <= 259200 && (deadline.dateTime - Date.now())/1000 > 86400
+                                                      (deadline.dateTime - Date.now())/1000 <= settings.yellowWarn && (deadline.dateTime - Date.now())/1000 > settings.redWarn
                                                       ?
                                                       <img src = {yellowWarn} className = "warn-icon" alt = "none" />
                                                       :null
@@ -179,12 +199,15 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
 
 const MapStateToProps = createStructuredSelector({
    deadlines: selectDeadlines,
-   editFlag: selectEditFlag
+   editFlag: selectEditFlag,
+   settings: selectSettings,
+   settingsFlag: selectSettingsFlag
 })
 
 const MapDispatchToProps = dispatch => ({
    toggleSort: () => dispatch(toggleSort()),
    toggleEdit: () => dispatch(toggleEdit()),
+   toggleSettings: () => dispatch(toggleSettings()),
    sortDeadline_action: () => dispatch(sortDeadline_action()),
    sortDeadlineDND_action: result => dispatch(sortDeadlineDND_action(result)),
    removeDeadline_action: item => dispatch(removeDeadline_action(item))

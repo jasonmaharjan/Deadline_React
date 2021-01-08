@@ -1,0 +1,29 @@
+.edit-content {
+   margin: 2rem 20vw;
+   text-align: center;
+   padding: 1rem;
+}  
+
+.form {
+   display: grid;
+   background-color: white;
+   grid-auto-rows: repeat(4, 1fr);
+   grid-gap: 2rem;
+   padding: 5rem;
+   border-radius: 2rem;
+   border: 1px solid rgb(121, 121, 121);
+   box-shadow: 1px 2px 4px rgb(121, 121, 121);
+}
+
+
+.remove_icon_ {
+   position: absolute;
+   top: 10vh;
+   right: 24vw;
+   transition: all .1s;
+
+   &:hover {
+      cursor: pointer;
+      transform: scale(1.4);
+   }
+}

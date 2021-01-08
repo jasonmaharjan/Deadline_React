@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58" height="58" viewBox="0 0 58 58">
+  <g id="Group_12" data-name="Group 12" transform="translate(-850 -192)">
+    <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(850 192)" fill="#b3c6ee" stroke="#565656" stroke-width="1">
+      <circle cx="29" cy="29" r="29" stroke="none"/>
+      <circle cx="29" cy="29" r="28.5" fill="none"/>
+    </g>
+    <g id="Group_6" data-name="Group 6" transform="translate(-1 -13)">
+      <g id="Group_4" data-name="Group 4" transform="translate(862.5 243)">
+        <g id="Ellipse_4" data-name="Ellipse 4" transform="translate(3.5)" fill="#fff" stroke="#565656" stroke-width="1">
+          <circle cx="4" cy="4" r="4" stroke="none"/>
+          <circle cx="4" cy="4" r="3.5" fill="none"/>
+        </g>
+        <line id="Line_3" data-name="Line 3" x2="24" transform="translate(11.43 4.5)" fill="none" stroke="#565656" stroke-linecap="round" stroke-width="1"/>
+        <path id="Path_113" data-name="Path 113" d="M4,0H0" transform="translate(0 4.5)" fill="#fff" stroke="#565656" stroke-linecap="round" stroke-width="1"/>
+      </g>
+    </g>
+    <g id="Group_10" data-name="Group 10" transform="translate(0 -13)">
+      <g id="Group_4-2" data-name="Group 4" transform="translate(9 13)">
+        <g id="Ellipse_4-2" data-name="Ellipse 4" transform="translate(866 204)" fill="#fff" stroke="#565656" stroke-width="1">
+          <circle cx="4" cy="4" r="4" stroke="none"/>
+          <circle cx="4" cy="4" r="3.5" fill="none"/>
+        </g>
+        <line id="Line_3-2" data-name="Line 3" x2="14.43" transform="translate(873.5 208.5)" fill="none" stroke="#565656" stroke-linecap="round" stroke-width="1"/>
+        <path id="Path_113-2" data-name="Path 113" d="M14.141,0H0" transform="translate(852.359 208.5)" fill="#fff" stroke="#565656" stroke-linecap="round" stroke-width="1"/>
+      </g>
+    </g>
+    <g id="Group_9" data-name="Group 9" transform="translate(1758.266 430) rotate(180)">
+      <g id="Group_4-3" data-name="Group 4" transform="translate(861.336 205)">
+        <g id="Ellipse_4-3" data-name="Ellipse 4" transform="translate(3.93)" fill="#fff" stroke="#565656" stroke-width="1">
+          <circle cx="4" cy="4" r="4" stroke="none"/>
+          <circle cx="4" cy="4" r="3.5" fill="none"/>
+        </g>
+        <line id="Line_3-3" data-name="Line 3" x2="24" transform="translate(11.571 4.5)" fill="none" stroke="#565656" stroke-linecap="round" stroke-width="1"/>
+        <path id="Path_113-3" data-name="Path 113" d="M4,0H0" transform="translate(0 4.5)" fill="#fff" stroke="#565656" stroke-linecap="round" stroke-width="1"/>
+      </g>
+    </g>
+  </g>
+</svg>

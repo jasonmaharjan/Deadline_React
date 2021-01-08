@@ -8,6 +8,38 @@
    align-items: center;
 }
 
+.icon-div {
+   display: flex;
+   justify-content: center;
+   //align-items: center;
+}
+
+.sort-icon {
+   padding: 0.25rem 0.5rem;
+   height: 3.25rem;
+   transition: all .3s;
+   &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+   }
+   &:active {
+      transform: translateY(.05rem);
+   }
+}
+
+.settings-icon {
+   padding: 0.25rem 0.5rem;
+   height: 3.25rem;
+   transition: all .3s;
+   &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+   }
+
+   &:active {
+      transform: translateY(.05rem);
+   }
+}
 .message {
    text-align: center;
    margin-top: 2.5rem;
@@ -64,19 +96,6 @@
    &:hover {
       cursor: pointer;
       transform: scale(1.4);
-   }
-}
-
-.sort-icon {
-   position: absolute;
-   padding: 0.25rem 0.5rem;
-   height: 3rem;
-   transition: all .3s;
-
-   &:hover {
-      transform: translateY(0.1rem);
-      cursor: pointer;
-      transform: scale(1.1);
    }
 }
 

@@ -7,8 +7,13 @@ import { sortDeadlineDND } from './course.utils';
 
 const INITIAL_STATE = {
    deadlines: [],
+   settings: { 
+      redWarn: 86400,          // by default 1 day
+      yellowWarn: 259200,      // by default 3 days
+   },
    sortFlag: false,
    editFlag: false,
+   settingsFlag: false,
 }
 
 const CourseReducer = (state = INITIAL_STATE, action) => {
@@ -43,6 +48,12 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
             ...state,
             editFlag: !state.editFlag
          }
+      
+      case (CourseActionTypes.TOGGLE_SETTINGS):
+         return {
+            ...state,
+            settingsFlag: !state.settingsFlag
+         }
          
       case (CourseActionTypes.SORT_DEADLINE):
          return {
@@ -54,6 +65,12 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
          return {
             ...state,
             deadlines: sortDeadlineDND(state.deadlines, action.payload),
+         }
+
+      case (CourseActionTypes.EDIT_SETTINGS): 
+         return {
+            ...state,
+            settings: action.payload
          }
    
       default: 

@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectSettings } from '../../redux/course/course.selectors';
+
 import './time_calc.styles.scss';
 
-const TimeCalc = ({item}) => {
+const TimeCalc = ({item, settings}) => {
    var deadline = new Date(item.dateTime);
    var now = Date.now();
 
@@ -23,9 +27,9 @@ const TimeCalc = ({item}) => {
 
    return (
       <div className = {`${
-         (item.dateTime - Date.now())/1000 <= 86400? 'red-warn'
+         (item.dateTime - Date.now())/1000 <= settings.redWarn? 'red-warn'
          :
-         (item.dateTime - Date.now())/1000 > 86400 && (item.dateTime - Date.now())/1000 <= 259200 ? 'yellow-warn'
+         (item.dateTime - Date.now())/1000 > settings.redWarn && (item.dateTime - Date.now())/1000 <= settings.yellowWarn ? 'yellow-warn'
          :
          'green-warn'
          }  
@@ -55,4 +59,8 @@ const TimeCalc = ({item}) => {
    }
 }
 
-export default TimeCalc;
+const MapStateToProps = createStructuredSelector({
+   settings: selectSettings
+})
+
+export default connect(MapStateToProps)(TimeCalc);
