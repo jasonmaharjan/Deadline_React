@@ -1,13 +1,16 @@
-.setDeadline {
-   padding: 3rem;
-   min-height: 100vh;
-   background-color: rgb(255, 255, 255);
-   color: rgb(0, 0, 0);
+%defaultStyle {
    padding: 10rem 14rem;
+   min-height: 100vh;
 }
 
-.setDeadline_title {
-   color: rgb(0, 0, 0);
+.setDeadline-dark {
+   @extend %defaultStyle;
+   background-color: #0a0e14;
+}
+
+.setDeadline {
+   @extend %defaultStyle;
+   background-color: rgb(255, 255, 255);
 }
 
 .content {

@@ -1,17 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
+import { toggleDarkMode } from '../../redux/course/course.actions';
 
 import "./header.styles.scss";
 
-const Header = () => {
+const Header = ({toggleDarkMode}) => {
    return (
       <div className="App">
             <header className="App-header">
-               <img src={logo} className="App-logo" alt="logo" />
-               <div className = "App-header-title">
-                  Deadline Tracker
-               </div>
+               <span className = "App-header-span">
+                  <img src={logo} className="App-header-span-icon" alt="logo" />
+                  <span className = "App-header-span-title">
+                     Deadline Tracker
+                  </span>
+               </span>
+
+               <button className = "App-header-toggle-button" onClick = {toggleDarkMode}>
+                     o
+               </button>
             </header>
 
             <div className = "route">
@@ -29,4 +37,8 @@ const Header = () => {
       );
 }
 
-export default Header;
+const MapDispatchToProps = dispatch => ({
+   toggleDarkMode: () => dispatch(toggleDarkMode())
+});
+
+export default connect(null, MapDispatchToProps)(Header);

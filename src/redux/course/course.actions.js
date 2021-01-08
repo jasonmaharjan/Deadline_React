@@ -12,6 +12,10 @@ export const toggleSettings = () => ({
    type: CourseActionTypes.TOGGLE_SETTINGS
 });
 
+export const toggleDarkMode = () => ({
+   type: CourseActionTypes.TOGGLE_DARK_MODE
+});
+
 export const addDeadline_action = item => ({
    type: CourseActionTypes.ADD_DEADLINE,
    payload: item

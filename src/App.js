@@ -15,7 +15,6 @@ function App() {
         <Route exact path = "/" component = {HomePage} />
         <Route path = "/set_deadline" component = {SetDeadline} />
         <Route path = "/view_deadline" component = {ViewDeadline} />
-
       </Switch>
     </div>
   );

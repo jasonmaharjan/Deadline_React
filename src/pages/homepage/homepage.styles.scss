@@ -1,15 +1,23 @@
-.homepage {
+%default-style {
    padding: 10rem 14rem;
    min-height: 100vh;
+}
+
+.homepage {
+   @extend %default-style;
    background-color: #ffffff;
-   color: rgb(0, 0, 0);
+}
+
+.homepage-dark {
+   @extend %default-style;
+   background-color: #0a0e14;
 }
 
 .title {
-   font-weight: 100;
-   font-size: 1.5rem;
+   font-weight: 400;
+   font-size: 1.25rem;
    letter-spacing: .05rem;
-   margin-bottom: 2.5rem;
+   margin-top: 2.5rem;
 }
 
 .info {

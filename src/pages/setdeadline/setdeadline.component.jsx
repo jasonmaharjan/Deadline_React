@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
-import { useSpring, animated } from 'react-spring';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
+import {selectDarkMode} from '../../redux/course/course.selectors';
+
+import { useSpring } from 'react-spring';
 import uuid from 'react-uuid';
 import Form from '../../components/form/form.component';
 import { Notification } from '../../components/notification/notification';
@@ -8,7 +12,7 @@ import SetDeadlineAction from './setDeadline_action.component';
 
 import './setdeadline.styles.scss';
 
-const SetDeadline = () => {
+const SetDeadline = ({darkMode}) => {
    const [course, setCourse] = useState('');
    const [date, setDate] = useState('');
    const [time, setTime] = useState('');
@@ -50,17 +54,13 @@ const SetDeadline = () => {
       opacity: 1,
    });
 
-   const formSpring = useSpring({
-      config: {mass: 1, tension: 170, friction:26}
-   });
-
    return (
-      <animated.div className = "setDeadline" style = {props}>
-         <h1 className = "title">
+      <div className = {`${darkMode ? 'setDeadline-dark' : 'setDeadline'}`} style = {props}>
+         <h1 style = { darkMode?{color: 'white'}:{color: 'black'}} className = "title">
             Set your Deadline here:
          </h1>
          <section className = "content">
-            <form className = "form" onSubmit = {handleSubmit} style = {formSpring}>
+            <form className = "form" onSubmit = {handleSubmit} style = { darkMode?{backgroundColor: '#d4d1cb'}:{backgroundColor: 'white'}}>
                <Form 
                   name = "course"
                   type = "string"
@@ -105,8 +105,12 @@ const SetDeadline = () => {
             </form>               
          </section>
 
-      </animated.div>
+      </div>
    );
 }
 
-export default SetDeadline;
+const MapStateToProps = createStructuredSelector({
+   darkMode: selectDarkMode
+});
+
+export default connect(MapStateToProps)(SetDeadline);

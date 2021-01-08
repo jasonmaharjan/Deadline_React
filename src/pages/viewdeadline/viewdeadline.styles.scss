@@ -1,11 +1,19 @@
-.view {
+%defaultStyle {
    padding: 20vh 14vw;
    min-height: 100vh;
-   background-color: #ffffff;
-   color: rgb(0, 0, 0);
    display: flex;
    flex-direction: column;
    align-items: center;
+}
+
+.view {   
+   @extend %defaultStyle;
+   background-color:#ffffff;
+}
+
+.view-dark {
+   @extend %defaultStyle;
+   background-color:#0a0e14;
 }
 
 .icon-div {
@@ -48,7 +56,7 @@
    margin-bottom: 2.5rem;
 }
 
-.deadline_list {
+%style {
    position: fixed;
    //margin: 2.5rem 10vw;
    border-radius: 2rem;
@@ -57,7 +65,16 @@
    padding: 2rem 5rem 3rem 3rem;
    position: relative;
    font-weight: 400;
-   background-color: #90d3e09d;
+}
+
+.deadline_list {
+   @extend %style;
+   background-color: #acd6df9d;
+}
+
+.deadline_list-dark {
+   @extend %style;
+   background-color: #b9b9b9;
 }
 
 .course_title {

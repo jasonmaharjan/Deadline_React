@@ -1,37 +1,62 @@
 .App {
-   background-color: #282c34;
+   background-color: #030205;
    position: fixed;
    width: 100%;
    z-index: 1000;
  }
  
- .App-logo {
-   height: 5vmin;
-   pointer-events: none;
- }
- 
  @media (prefers-reduced-motion: no-preference) {
-   .App-logo {
+   .App-header-span-icon {
      animation: App-logo-spin infinite 15s linear;
    }
  }
  
  .App-header {
    padding: 1.25rem 0;
-   max-height: 10vh;
-   width: 100%;
-   background-color: #282c34;
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: 1.5rem;
    color: white;
- 
-   &-title {
-     text-transform: uppercase;
-     font-weight: 300;
-   }
- }
+
+   &-span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 14vw;
+
+      &-icon {
+        height: 5vmin;
+        pointer-events: none;
+      }
+    
+      &-title {
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        font-weight: 300;
+      }  
+  }
+
+  &-toggle-button {
+    width: 1.5rem;
+    border-radius: 50%;
+    margin: 0 14vw 0 auto;
+    border: none;
+    transition: all .1s;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+
+    &:focus {
+      outline-style: none;
+    }
+
+    &:active {
+      transform: translateY(0.01rem);
+    }
+  }
+}
  
  .route {
    max-height: 8vh;

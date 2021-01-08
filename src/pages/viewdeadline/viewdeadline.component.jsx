@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectDeadlines, selectEditFlag, 
-         selectSettings, selectSettingsFlag } from '../../redux/course/course.selectors';
+         selectSettings, selectSettingsFlag, selectDarkMode } from '../../redux/course/course.selectors';
 
 import { toggleSort, sortDeadline_action, 
          removeDeadline_action, toggleEdit,
          sortDeadlineDND_action, 
          toggleSettings } from '../../redux/course/course.actions';
 
-import { useSpring, animated } from 'react-spring';
+import { useSpring } from 'react-spring';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import TimeCalc from '../../components/time_calc/time_calc.component';
@@ -26,7 +26,7 @@ import settingsIcon from "../../images/settings.svg";
 
 import './viewdeadline.styles.scss';
 
-const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, editFlag, 
+const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, toggleEdit, editFlag, 
                         removeDeadline_action, sortDeadlineDND_action, settings, settingsFlag, toggleSettings}) => {
    const [deadlineToEdit, setDeadlineToEdit] = useState(null);
 
@@ -43,7 +43,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
    }
 
    return(
-      <animated.div className = "view" style = {props}>
+      <div className = {`${darkMode ? 'view-dark' : 'view'}`} style = {props}>
          {
             editFlag && deadlineToEdit?
             <div className = "edit-form-overlay">
@@ -84,13 +84,20 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
                            <div
                               {...provided.droppableProps} 
                               ref = {provided.innerRef}
-                              style = {{
-                                 background: '#e9edf5',
+                              style = {
+                                 darkMode?{
+                                    background: '#d4d1cb',
+                                    borderRadius: '1rem',
+                                    padding: 40,
+                                    width: 800,
+                                    marginTop: '2rem'  
+                                  }
+                                 : {background: '#e9edf5',
                                  borderRadius: '1rem',
                                  padding: 40,
                                  width: 800,
-                                 marginTop: '2rem'  
-                              }}
+                                 marginTop: '2rem' }
+                              }
                            >
                               {deadlines.map((deadline, index) => {
                                  return (
@@ -111,7 +118,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
                                                    }
                                                 }
                                              >
-                                                <div className = 'deadline_list'>
+                                                <div className = {`${darkMode ? 'deadline_list-dark' : 'deadline_list'}`}>
                                                    {
                                                       (deadline.dateTime - Date.now())/1000 <= settings.redWarn
                                                       ? 
@@ -191,9 +198,7 @@ const ViewDeadline = ({deadlines, sortDeadline_action, toggleSort, toggleEdit, e
                Hurray! You do not have any deadlines ...yet
             </div>
          }    
-         
-
-      </animated.div>
+      </div>
    );
 };
 
@@ -201,7 +206,8 @@ const MapStateToProps = createStructuredSelector({
    deadlines: selectDeadlines,
    editFlag: selectEditFlag,
    settings: selectSettings,
-   settingsFlag: selectSettingsFlag
+   settingsFlag: selectSettingsFlag,
+   darkMode: selectDarkMode
 })
 
 const MapDispatchToProps = dispatch => ({

@@ -14,6 +14,7 @@ const INITIAL_STATE = {
    sortFlag: false,
    editFlag: false,
    settingsFlag: false,
+   darkMode: false,
 }
 
 const CourseReducer = (state = INITIAL_STATE, action) => {
@@ -71,6 +72,12 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
          return {
             ...state,
             settings: action.payload
+         }
+
+      case (CourseActionTypes.TOGGLE_DARK_MODE):
+         return {
+            ...state,
+            darkMode: !state.darkMode
          }
    
       default: 
