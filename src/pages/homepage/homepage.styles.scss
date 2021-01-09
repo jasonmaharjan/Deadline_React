@@ -1,3 +1,5 @@
+@import "../../components/sass_variables/sass_variables.scss";
+
 %default-style {
    padding: 10rem 14rem;
    min-height: 100vh;
@@ -5,12 +7,12 @@
 
 .homepage {
    @extend %default-style;
-   background-color: #ffffff;
+   background-color: $background-color-light;
 }
 
 .homepage-dark {
    @extend %default-style;
-   background-color: #0a0e14;
+   background-color: $background-color-dark;
 }
 
 .title {

@@ -1,3 +1,5 @@
+@import "../../components//sass_variables/sass_variables.scss";
+
 %defaultStyle {
    padding: 20vh 14vw;
    min-height: 100vh;
@@ -8,12 +10,12 @@
 
 .view {   
    @extend %defaultStyle;
-   background-color:#ffffff;
+   background-color: $background-color-light;
 }
 
 .view-dark {
    @extend %defaultStyle;
-   background-color:#0a0e14;
+   background-color: $background-color-dark;
 }
 
 .icon-div {

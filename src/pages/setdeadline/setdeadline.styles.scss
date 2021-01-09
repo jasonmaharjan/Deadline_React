@@ -1,3 +1,5 @@
+@import "../../components//sass_variables/sass_variables.scss";
+
 %defaultStyle {
    padding: 10rem 14rem;
    min-height: 100vh;
@@ -5,12 +7,12 @@
 
 .setDeadline-dark {
    @extend %defaultStyle;
-   background-color: #0a0e14;
+   background-color: $background-color-dark;
 }
 
 .setDeadline {
    @extend %defaultStyle;
-   background-color: rgb(255, 255, 255);
+   background-color: $background-color-light;
 }
 
 .content {

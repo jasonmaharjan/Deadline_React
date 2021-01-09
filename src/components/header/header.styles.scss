@@ -1,5 +1,7 @@
+@import "../../components/sass_variables/sass_variables.scss" ;
+
 .App {
-   background-color: #030205;
+   background-color: $header-bg-color;
    position: fixed;
    width: 100%;
    z-index: 1000;
@@ -57,7 +59,68 @@
     }
   }
 }
- 
+
+.App-btn {
+  margin: 0 14vw 0 auto;
+  width: 3.35rem;
+  height: 1.75rem;
+  border-radius: 5rem;
+  background-color: rgb(61, 61, 61);
+
+  &-input {
+    display: none;
+  }
+
+$bg-color: rgb(136, 147, 160);
+  
+&-label {
+  position: relative;
+  background-color: $bg-color;
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 5rem;
+  overflow: hidden;
+  cursor: pointer;
+
+    &:before, &:after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 5px;
+      height: 1.25rem;
+      width: 1.25rem;
+      border-radius: 50%;
+    }
+
+    &:before {
+      left: -1.35rem;
+      background-color: $bg-color;
+      transition: 0.4s ease left, 0.2s ease top;
+      z-index: 1;
+    }
+
+    &:after {
+      left: 0.3rem;
+      background-color: white;
+      transition: 0.4s ease left;
+    }
+
+    #toggle-btn:checked + &:before {
+      top: -0.15rem;
+      left: 1.2rem;
+    }
+
+    #toggle-btn:checked + &:after {
+      left: 1.65rem;
+    }
+  }
+}
+
+
+
+
+
  .route {
    max-height: 8vh;
    padding-bottom: 1rem;
