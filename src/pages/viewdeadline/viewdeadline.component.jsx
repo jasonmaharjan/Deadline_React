@@ -16,6 +16,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import TimeCalc from '../../components/time_calc/time_calc.component';
 import EditForm from '../../components/editForm/editForm.component';
 import SettingsForm from '../../components/settingsForm/settingsForm.component';
+import { Notification } from '../../components/notification/notification';
 
 import cross from "../../images/cross.svg";
 import edit from "../../images/edit.svg";
@@ -23,12 +24,14 @@ import sort from "../../images/sort.svg";
 import redWarn from "../../images/red_warning.svg";
 import yellowWarn from "../../images/yellow_warning.svg";
 import settingsIcon from "../../images/settings.svg";
+import search from "../../images/searchButton.svg";
 
 import './viewdeadline.styles.scss';
 
 const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, toggleEdit, editFlag, 
                         removeDeadline_action, sortDeadlineDND_action, settings, settingsFlag, toggleSettings}) => {
    const [deadlineToEdit, setDeadlineToEdit] = useState(null);
+   const [searchField, setSearchField] = useState('');
 
    const props = useSpring({
       from: {opacity: 0},
@@ -42,6 +45,11 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
       else return false
    }
 
+   const onSearchChange = event => {
+      setSearchField(event.target.value);
+   }
+
+   const filteredDeadlines = deadlines.filter(deadline => deadline.course.toLowerCase().includes(searchField.toLowerCase()) || deadline.description.toLowerCase().includes(searchField.toLowerCase()));
    return(
       <div className = {`${darkMode ? 'view-dark' : 'view'}`} style = {props}>
          {
@@ -51,18 +59,27 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
             </div>:null
          }
          {
-            settingsFlag && deadlines.length?
+            settingsFlag?
             <div className = "edit-form-overlay">
                <SettingsForm />
             </div>:null
          }
-         {
-            deadlines.length?
             <div className = "icon-div">
+               <form action="#" className="search">
+                  <input type="text" className="search_input" placeholder="Search for Deadlines" onChange = {onSearchChange}/>
+                  <button className="search_button">
+                     <img src = {search} className = "search_button_img" alt = "None" />
+                  </button>
+               </form>
                <img 
                   src = {sort} 
                   className = "sort-icon" 
-                  onClick = {() => {toggleSort(); sortDeadline_action()}} 
+                  onClick = {() => {
+                     if (deadlines.length) {
+                        toggleSort(); sortDeadline_action();
+                     }
+                     else Notification('info', 'Sort Action', 'No deadlines to sort');
+                  }} 
                   alt = "none"
                />
             
@@ -73,10 +90,8 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
                   alt = "none"
                />
             </div>
-            :null
-         }
          {
-            deadlines.length? (
+            filteredDeadlines.length? (
                <DragDropContext onDragEnd = {result => sortDeadlineDND_action(result)}>
                   <Droppable droppableId = "deadlines">
                      {(provided, snapshot) => {
@@ -99,7 +114,7 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
                                  marginTop: '2rem' }
                               }
                            >
-                              {deadlines.map((deadline, index) => {
+                              {filteredDeadlines.map((deadline, index) => {
                                  return (
                                     <Draggable key = {deadline.id} draggableId = {deadline.id} index = {index}>
                                        {(provided, snapshot) => {
@@ -194,9 +209,14 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
                </DragDropContext>
             )
             :
-            <div className = "message">
-               Hurray! You do not have any deadlines ...yet
-            </div>
+            !deadlines.length? 
+               <div className = {`${darkMode ? 'message-dark' : 'message-light'}`}>
+                  Hurray! You do not have any deadlines...yet
+               </div>
+            :
+               <div className = {`${darkMode ? 'message-dark' : 'message-light'}`}>
+                  No Results Found
+               </div>
          }    
       </div>
    );

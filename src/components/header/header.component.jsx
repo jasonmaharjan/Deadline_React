@@ -33,7 +33,7 @@ const Header = ({toggleDarkMode, darkMode}) => {
                          checked = {checked}
                          onChange = {handleCheckbox}
                   />
-                  <label className = "App-btn-label" for = "toggle-btn" />
+                  <label className = "App-btn-label" htmlFor = "toggle-btn" />
                </div>
             </header>
 
