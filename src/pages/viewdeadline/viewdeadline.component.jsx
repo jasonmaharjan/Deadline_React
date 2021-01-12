@@ -65,7 +65,7 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
             </div>:null
          }
             <div className = "icon-div">
-               <form action="#" className="search">
+               <form className="search">
                   <input type="text" className="search_input" placeholder="Search for Deadlines" onChange = {onSearchChange}/>
                   <button className="search_button">
                      <img src = {search} className = "search_button_img" alt = "None" />

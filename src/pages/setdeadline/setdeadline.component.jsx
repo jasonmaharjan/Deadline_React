@@ -4,7 +4,7 @@ import {createStructuredSelector} from 'reselect';
 import {selectDarkMode} from '../../redux/course/course.selectors';
 
 import { useSpring } from 'react-spring';
-import uuid from 'react-uuid';
+import uuid from 'uuid';
 import Form from '../../components/form/form.component';
 import { Notification } from '../../components/notification/notification';
 
@@ -17,11 +17,18 @@ const SetDeadline = ({darkMode}) => {
    const [date, setDate] = useState('');
    const [time, setTime] = useState('');
    const [description, setDescription] = useState('');
-   const id = uuid();
+   const [id, setId] = useState(uuid());
    const dateTime = new Date(`${date} ${time}`).getTime()
-
    const item = {
       course, date, time, id, description, dateTime
+   }
+   // for resetting values after form upload
+   const resetForm = () => {
+      setCourse('');
+      setDate('');
+      setTime('');
+      setDescription('');
+      setId(uuid());
    }
 
    const handleChange = event => {
@@ -40,13 +47,14 @@ const SetDeadline = ({darkMode}) => {
             setDescription(value);
             break;
          default:
-            console.log('form-fill')
+            console.log("deadline form fill up")
       }
    }
 
    const handleSubmit = event => {
       event.preventDefault();
       Notification("success", "Deadline Added!", "Your deadline has been added");
+      resetForm();
    }
 
    const props = useSpring({
@@ -97,10 +105,10 @@ const SetDeadline = ({darkMode}) => {
                   required 
                />  
 
-               {  (course) && (date) && (description)?
+               {  course && date && description && time &&id?
                   <SetDeadlineAction item = {item} />
                   :
-                  null             
+                  null            
                }
             </form>               
          </section>
