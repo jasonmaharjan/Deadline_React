@@ -2,3 +2,10 @@ $background-color-light: #ffffff;
 $background-color-dark: #1e1f26;
 $header-bg-color: #131417;
 $font-color: rgb(236, 236, 236);
+$bg-color: rgb(136, 147, 160);
+
+// Media Queries
+$bp-largest: 68.75em; // 1100px
+$bp-large: 56.25em; // 900px
+$bp-small: 43.75em; // 700px
+$bp-smallest: 30em; // 480px
