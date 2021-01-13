@@ -99,20 +99,7 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
                            <div
                               {...provided.droppableProps} 
                               ref = {provided.innerRef}
-                              style = {
-                                 darkMode?{
-                                    background: '#d4d1cb',
-                                    borderRadius: '1rem',
-                                    padding: 40,
-                                    width: 800,
-                                    marginTop: '2rem'  
-                                  }
-                                 : {background: '#e9edf5',
-                                 borderRadius: '1rem',
-                                 padding: 40,
-                                 width: 800,
-                                 marginTop: '2rem' }
-                              }
+                              className = {`${darkMode ? 'droppable-dark':'droppable-light'}`}
                            >
                               {filteredDeadlines.map((deadline, index) => {
                                  return (
@@ -148,7 +135,7 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
                                                       {deadline.course}
                                                    </h1>
                                                    <div className = "course_deadline">
-                                                      Deadline: {deadline.date}&nbsp;&nbsp;&nbsp;&nbsp;
+                                                      Due: {deadline.date}&nbsp;&nbsp;&nbsp;&nbsp;
                                                       {
                                                          deadline.time[0]+deadline.time[1] > 12 ?
                                                             <span> 
@@ -169,7 +156,7 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
                                                    </div>      
 
                                                    <div className = "description">
-                                                      Description: {deadline.description}
+                                                     <i>{deadline.description}</i>
                                                    </div>
 
                                                    <TimeCalc item = {deadline} />

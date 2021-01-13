@@ -33,10 +33,10 @@ const TimeCalc = ({item, settings}) => {
          :
          'green-warn'
          }  
-      `}>
-         Time Left: 
+      `}> 
+      <span>
          {
-            d?(d > 1)?<span> {d} days</span>: <span> {d} day</span>:null
+            d?(d > 1)?<span> {d} days </span>: <span> {d} day</span>:null
          } 
          
          {
@@ -46,6 +46,8 @@ const TimeCalc = ({item, settings}) => {
          {
             m?(m > 1)?<span> {m} minutes</span>: <span> {m} minute</span>:null
          } 
+         &nbsp;remaining
+      </span>
       </div>
       )
    }
