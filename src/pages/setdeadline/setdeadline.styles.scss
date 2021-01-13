@@ -1,8 +1,20 @@
 @import "../../components//sass_variables/sass_variables.scss";
 
 %defaultStyle {
-   padding: 10rem 14rem;
+   padding: 20vh 14vw;
    min-height: 100vh;
+
+   @media only screen and (max-width: $bp-large) {
+      padding: 20vh 10vw;
+   }
+
+   @media only screen and (max-width: $bp-smallest) {
+      padding: 20vh 10vw;
+   }
+
+   @media only screen and (max-width: $bp-mobile) {
+      padding: 20vh 5vw;
+   }
 }
 
 .setDeadline-dark {
@@ -16,19 +28,23 @@
 }
 
 .content {
-   margin: 2.5rem 8vw;
+   padding: 1vw 4vw 0;
    text-align: center;
-}  
+      
+   &-form {
+      display: grid;
+      grid-auto-rows: repeat(4, 1fr);
+      grid-gap: 2vw;
+      padding: 4rem 5vw 4rem 5vw;
+      border-radius: 2rem;
+      border: 1px solid rgb(121, 121, 121);
+      box-shadow: 3px 2px 4px rgb(121, 121, 121);    
 
-.form {
-   display: grid;
-   grid-auto-rows: repeat(4, 1fr);
-   grid-gap: 2rem;
-   padding: 5rem;
-   border-radius: 2rem;
-   border: 1px solid rgb(121, 121, 121);
-   box-shadow: 1px 2px 4px rgb(121, 121, 121);
-}
+      @media only screen and (max-width: $bp-small) {
+         grid-gap: 4vw;
+      }
+   }
+}  
 
 .button {
    background-color: transparent;

@@ -68,7 +68,7 @@ const SetDeadline = ({darkMode}) => {
             Set your Deadline here:
          </h1>
          <section className = "content">
-            <form className = "form" onSubmit = {handleSubmit} style = { darkMode?{backgroundColor: '#d4d1cb'}:{backgroundColor: 'white'}}>
+            <form className = "content-form" onSubmit = {handleSubmit} style = { darkMode?{backgroundColor: '#d4d1cb'}:{backgroundColor: 'white'}}>
                <Form 
                   name = "course"
                   type = "string"
