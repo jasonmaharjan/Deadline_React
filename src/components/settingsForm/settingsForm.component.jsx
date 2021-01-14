@@ -54,7 +54,7 @@ const SettingsForm = ({ settings, settingsFlag, toggleSettings, editSettings_act
                   type = "number"
                   value = {redWarn}
                   handleChange = {handleChange}
-                  label = "Red Warning :"
+                  label = "Red Warn:"
                   required 
                />
 
@@ -63,7 +63,7 @@ const SettingsForm = ({ settings, settingsFlag, toggleSettings, editSettings_act
                   type = "number"
                   value = {yellowWarn}
                   handleChange = {handleChange}
-                  label = "Yellow Warning :"
+                  label = "Yellow Warn :"
                   required 
                />
 

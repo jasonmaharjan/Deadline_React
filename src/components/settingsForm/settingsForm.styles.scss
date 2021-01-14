@@ -1,24 +1,33 @@
+@import "../../components/sass_variables/sass_variables.scss";
+
 .edit-content {
    margin: 2rem 20vw;
    text-align: center;
    padding: 1rem;
+
+   @media only screen and (max-width: $bp-largest) {
+      margin: 2rem 15vw;
+   }
 }  
 
 .form {
    display: grid;
    background-color: white;
    grid-auto-rows: repeat(4, 1fr);
-   grid-gap: 2rem;
-   padding: 5rem;
+   grid-gap: 1rem;
+   padding: 5rem 4vw;
    border-radius: 2rem;
    border: 1px solid rgb(121, 121, 121);
    box-shadow: 1px 2px 4px rgb(121, 121, 121);
-}
 
+   @media only screen and (max-width: $bp-largest) {
+      padding: 5rem 4vw;
+   }
+}
 
 .remove_icon_ {
    position: absolute;
-   top: 10vh;
+   top: 31vh;
    right: 24vw;
    transition: all .1s;
 

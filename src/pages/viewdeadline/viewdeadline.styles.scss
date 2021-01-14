@@ -228,9 +228,10 @@
 }
 
 .edit-form-overlay {
+   padding-top: 20vh;
    background-color: rgba(0, 0, 0, 0.5);
    position: absolute;
-   margin-top: -1.55rem;
+   margin-top: -20vh;
    left: 0;
    right: 0;
    z-index: 10;
