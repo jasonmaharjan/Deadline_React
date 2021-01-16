@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux';
 
-import Form from '../form/form.component';
+import Settings from '../form/settingsform.component';
 import { Notification } from '../notification/notification';
 
 import { createStructuredSelector } from 'reselect';
@@ -49,7 +49,7 @@ const SettingsForm = ({ settings, settingsFlag, toggleSettings, editSettings_act
                <span className = "remove_icon_" onClick = {() => toggleSettings()}>
                   <img src = {cross} alt = "none" />
                </span> 
-               <Form 
+               <Settings
                   name = "redWarn"
                   type = "number"
                   value = {redWarn}
@@ -58,7 +58,7 @@ const SettingsForm = ({ settings, settingsFlag, toggleSettings, editSettings_act
                   required 
                />
 
-               <Form 
+               <Settings
                   name = "yellowWarn"
                   type = "number"
                   value = {yellowWarn}

@@ -88,6 +88,11 @@
       width: 60vw;
       margin: 0 1vw 0 -2vw;
    }
+
+   @media only screen and (max-width: $bp-smallest) {
+      width: 40vw;
+      margin: 0 1vw 0 -2vw;
+   }
 }
 
 .sort-icon {
@@ -106,6 +111,11 @@
    @media only screen and (max-width: $bp-smallest) {
       padding-left: 1rem;
    }
+   
+   @media only screen and (max-width: $bp-mobile) {
+      height: 2.75rem;
+      margin-right: 0.5rem;
+   }
 }
 
 .settings-icon {
@@ -119,6 +129,10 @@
 
    &:active {
       transform: translateY(.05rem);
+   }
+   
+   @media only screen and (max-width: $bp-mobile) {
+      height: 2.75rem;
    }
 }
 

@@ -18,6 +18,18 @@
    @media only screen and (max-width: $bp-mobile) {
       grid-template-columns: 20vw 1fr;
    }
+
+   &-settings {
+      display: grid;
+      grid-template-columns: 10vw 20vw;
+      justify-content: center;
+      grid-gap: 2rem;
+
+      @media only screen and (max-width: $bp-large) {
+         justify-content: flex-start;
+         grid-template-columns: 15vw 20vw;
+      }
+   }
 }
 
 .form-label {
@@ -34,7 +46,21 @@
    }
 
    @media only screen and (max-width: $bp-small) {
+      font-size: 0.85rem;
+   }
+
+   &-settings {
+      display: flex;
+      justify-content: flex-end;
+      align-items:center;
+      color: rgb(0, 0, 0);
       font-size: 1rem;
+      font-weight: 100;
+      pointer-events: none;
+
+      @media only screen and (max-width: $bp-large) {
+         font-size: 0.85rem;
+      }
    }
 }
 
@@ -54,5 +80,19 @@
    @media only screen and (max-width: $bp-small) {
       font-size: 0.75rem;
       width: 100%;
+   }
+
+   &-settings {
+      background-color: $form-input-color;
+      width: 100%;
+      color: rgb(82, 82, 82);
+      font-size: 0.90rem;
+      padding: 10px 15px 10px 10px;
+      border: none;
+      border-radius: 0.5rem;
+
+      &:focus {
+         outline-style: none;
+      }
    }
 }
