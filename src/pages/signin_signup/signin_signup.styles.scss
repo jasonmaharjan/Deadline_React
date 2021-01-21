@@ -1,0 +1,33 @@
+@import "../../components/sass_variables/sass_variables.scss";
+
+%default-style {
+   padding: 20vh 14vw;
+   min-height: 100vh;
+}
+
+.signin {
+   @extend %default-style;
+   background-color: $background-color-light;
+}
+
+.signin-dark {
+   @extend %default-style;
+   background-color: $background-color-dark;
+}
+
+.signin-signup {
+   font-weight: 100;
+   font-size: 1.25rem;
+   margin-top: 2.5rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+
+   @media only screen and (max-width: $bp-small) {
+      font-size: 1.15rem;
+   }
+
+   @media only screen and (max-width: $bp-smallest) {
+      font-size: 1rem;
+   }
+}

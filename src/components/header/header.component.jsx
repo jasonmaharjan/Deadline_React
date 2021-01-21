@@ -47,6 +47,9 @@ const Header = ({toggleDarkMode, darkMode}) => {
                <Link className  = "route-name" to = "/view_deadline">
                   View Deadlines
                </Link>
+               <Link className  = "route-name" to = "/signin_signup">
+                  SignIn
+               </Link>
             </div>
          </div>
       );

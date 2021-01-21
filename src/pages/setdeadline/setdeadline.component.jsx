@@ -2,17 +2,16 @@ import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {selectDarkMode} from '../../redux/course/course.selectors';
+import { addDeadline_action } from '../../redux/course/course.actions';
 
 import { useSpring } from 'react-spring';
 import uuid from 'uuid';
 import Form from '../../components/form/form.component';
 import { Notification } from '../../components/notification/notification';
 
-import SetDeadlineAction from './setDeadline_action.component';
-
 import './setdeadline.styles.scss';
 
-const SetDeadline = ({darkMode}) => {
+const SetDeadline = ({darkMode, addDeadline_action}) => {
    const [course, setCourse] = useState('');
    const [date, setDate] = useState('');
    const [time, setTime] = useState('');
@@ -106,7 +105,9 @@ const SetDeadline = ({darkMode}) => {
                />  
 
                {  course && date && description && time &&id?
-                  <SetDeadlineAction item = {item} />
+                  <button className = "button" type = "submit" onClick = {() => {item?addDeadline_action(item):alert("Please fill out the required information!")}}>
+                     SUBMIT
+                  </button>
                   :
                   null            
                }
@@ -121,4 +122,8 @@ const MapStateToProps = createStructuredSelector({
    darkMode: selectDarkMode
 });
 
-export default connect(MapStateToProps)(SetDeadline);
+const MapDispatchToProps = dispatch => ({
+   addDeadline_action: item => dispatch(addDeadline_action(item))
+});
+
+export default connect(MapStateToProps, MapDispatchToProps)(SetDeadline);
