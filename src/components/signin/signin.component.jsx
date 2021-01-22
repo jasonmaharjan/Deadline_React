@@ -3,17 +3,18 @@ import { connect } from 'react-redux';
 
 import { createStructuredSelector } from 'reselect';
 import { selectDarkMode } from '../../redux/settings/settings.selectors';
+import { googleSignInStart, emailSignInStart } from '../../redux/user/user.actions';
 
 import Form from '../../components/form/form.component';
 import './signin.styles.scss';
 
-const SignIn = ({darkMode}) => {
+const SignIn = ({darkMode, googleSignInStart, emailSignInStart}) => {
    const [userCredentials, setUserCredentials] = useState({email: '', password: ''});
    const { email, password } = userCredentials; 
 
    const handleSubmit = async event => {
       event.preventDefault();
-      //emailSignInStart(email, password);      
+      emailSignInStart(email, password);      
    }
 
    const handleChange = event => {
@@ -50,13 +51,11 @@ const SignIn = ({darkMode}) => {
                </button>
 
                <button className = "button-google" type = "button"
-                  /*onClick = {googleSignInStart}*/
-                  isGoogleSignIn>
-                  {' '}
-                  Sign in with Google {' '}
+                  onClick = {googleSignInStart}
+               > 
+                  Sign in with Google
                </button>
             </div>
-
          </form>
       </div>
    )
@@ -66,4 +65,9 @@ const MapStateToProps = createStructuredSelector({
    darkMode: selectDarkMode
 });
 
-export default connect(MapStateToProps)(SignIn);
+const MapDispatchToProps = dispatch => ({
+   googleSignInStart: () => dispatch(googleSignInStart()),
+   emailSignInStart: (email, password) => dispatch(emailSignInStart({email, password}))
+});
+
+export default connect(MapStateToProps, MapDispatchToProps)(SignIn);

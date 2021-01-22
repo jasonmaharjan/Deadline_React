@@ -3,20 +3,21 @@ import { connect } from 'react-redux';
 
 import { createStructuredSelector } from 'reselect';
 import { selectDarkMode } from '../../redux/settings/settings.selectors';
+import { signUpStart } from '../../redux/user/user.actions';
 
 import Form from "../../components/form/form.component";
 
 import './signup.styles.scss';
 
-const SignUp = ({darkMode}) => {
+const SignUp = ({darkMode, signUpStart}) => {
    const [userCredentials, setUserCredentials] = useState({
-      displayName: '',
+      Name: '',
       email: '',
       password: '',
       confirmPassword: ''   
    });
 
-   const { displayName, email, password, confirmPassword } = userCredentials;
+   const { Name, email, password, confirmPassword } = userCredentials;
 
    const handleSubmit = async event => {
       event.preventDefault(); 
@@ -24,7 +25,7 @@ const SignUp = ({darkMode}) => {
          alert('Passwords do not match!');
          return;
       }
-      //signUpStart({email, password, displayName});
+      signUpStart({email, password, Name});
    }
 
    const handleChange= event => {
@@ -40,11 +41,10 @@ const SignUp = ({darkMode}) => {
          <form className = "content-form" onSubmit = {handleSubmit} style = { darkMode?{backgroundColor: '#d4d1cb'}:{backgroundColor: 'white'}}>
             <Form
                type = 'text'
-               name = 'displayName'
-               value = {displayName}
+               name = 'Name'
+               value = {Name}
                onChange = {handleChange}
                label = 'Name:'
-               style = { darkMode?{color: 'white'}:{color: 'black'}}
                required
             />
 
@@ -83,4 +83,8 @@ const MapStateToProps = createStructuredSelector({
    darkMode: selectDarkMode
 });
 
-export default connect(MapStateToProps)(SignUp);
+const MapDispatchToProps = dispatch => ({
+   signUpStart: (signUpData) => dispatch(signUpStart(signUpData))
+});
+
+export default connect(MapStateToProps, MapDispatchToProps)(SignUp);
