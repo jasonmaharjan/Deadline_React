@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { connect } from 'react-redux';
 
 import { createStructuredSelector } from 'reselect';
-import { selectDarkMode } from '../../redux/course/course.selectors';
+import { selectDarkMode } from '../../redux/settings/settings.selectors';
 
 import Form from "../../components/form/form.component";
 

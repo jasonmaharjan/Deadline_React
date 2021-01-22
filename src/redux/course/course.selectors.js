@@ -11,18 +11,3 @@ export const selectEditFlag = createSelector(
    [selectState],
    deadlines => deadlines.editFlag
 )
-
-export const selectSettings = createSelector(
-   [selectState],
-   deadlines => deadlines.settings
-)
-
-export const selectSettingsFlag = createSelector(
-   [selectState],
-   deadlines => deadlines.settingsFlag
-)
-
-export const selectDarkMode = createSelector(
-   [selectState],
-   deadlines => deadlines.darkMode
-)

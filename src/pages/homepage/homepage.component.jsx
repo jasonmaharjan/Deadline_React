@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useSpring, animated } from 'react-spring';
 import './homepage.styles.scss';
 import { createStructuredSelector } from 'reselect';
-import { selectDarkMode } from '../../redux/course/course.selectors';
+import { selectDarkMode } from '../../redux/settings/settings.selectors';
 
 const HomePage = ({darkMode}) => {
    const props = useSpring({

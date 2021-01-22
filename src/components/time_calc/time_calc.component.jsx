@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectSettings } from '../../redux/course/course.selectors';
+import { selectSettings } from '../../redux/settings/settings.selectors';
 
 import './time_calc.styles.scss';
 

@@ -1,0 +1,5 @@
+export const SettingsActionTypes = {
+   TOGGLE_SETTINGS: 'TOGGLE_SETTINGS',
+   EDIT_SETTINGS: 'EDIT_SETTINGS',
+   TOGGLE_DARK_MODE: 'TOGGLE_DARK_MODE',
+}

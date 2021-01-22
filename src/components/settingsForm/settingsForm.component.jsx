@@ -5,8 +5,9 @@ import Settings from '../form/settingsform.component';
 import { Notification } from '../notification/notification';
 
 import { createStructuredSelector } from 'reselect';
-import { selectSettingsFlag, selectSettings } from '../../redux/course/course.selectors';
-import { toggleSettings, editSettings_action } from '../../redux/course/course.actions';
+import { selectSettingsFlag, selectSettings } from '../../redux/settings/settings.selectors';
+
+import { toggleSettings, editSettings_action } from '../../redux/settings/settings.actions';
 
 import './settingsForm.styles.scss';
 import cross from "../../images/cross.svg";

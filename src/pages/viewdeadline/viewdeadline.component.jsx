@@ -2,13 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectDeadlines, selectEditFlag, 
-         selectSettings, selectSettingsFlag, selectDarkMode } from '../../redux/course/course.selectors';
-
+import { selectDeadlines, selectEditFlag } from '../../redux/course/course.selectors';
 import { toggleSort, sortDeadline_action, 
          removeDeadline_action, toggleEdit,
          sortDeadlineDND_action, 
-         toggleSettings } from '../../redux/course/course.actions';
+          } from '../../redux/course/course.actions';
+import { selectSettings, selectSettingsFlag, selectDarkMode } from '../../redux/settings/settings.selectors';
+import { toggleSettings } from '../../redux/settings/settings.actions';
 
 import { useSpring } from 'react-spring';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';

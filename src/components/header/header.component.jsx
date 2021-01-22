@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectDarkMode } from '../../redux/course/course.selectors';
+import { selectDarkMode } from '../../redux/settings/settings.selectors';
 
 import logo from '../../logo.svg';
 import { Link } from 'react-router-dom';
-import { toggleDarkMode } from '../../redux/course/course.actions';
+import { toggleDarkMode } from '../../redux/settings/settings.actions';
 
 import "./header.styles.scss";
 
