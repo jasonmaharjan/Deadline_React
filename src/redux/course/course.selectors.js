@@ -11,3 +11,13 @@ export const selectEditFlag = createSelector(
    [selectState],
    deadlines => deadlines.editFlag
 )
+
+export const selectIsCollectionFetching = createSelector (
+   [selectState],
+   deadlines => deadlines.isFetching
+);
+
+export const selectIsCollectionLoaded = createSelector (
+   [selectState],
+   deadlines => !!deadlines.collections // !!null returns false !!{} returns true
+)

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {selectDarkMode} from '../../redux/settings/settings.selectors';
 import { addDeadline_action } from '../../redux/course/course.actions';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import { useSpring } from 'react-spring';
 import uuid from 'uuid';
@@ -11,7 +12,7 @@ import { Notification } from '../../components/notification/notification';
 
 import './setdeadline.styles.scss';
 
-const SetDeadline = ({darkMode, addDeadline_action}) => {
+const SetDeadline = ({darkMode, addDeadline_action, currentUser}) => {
    const [course, setCourse] = useState('');
    const [date, setDate] = useState('');
    const [time, setTime] = useState('');
@@ -54,6 +55,11 @@ const SetDeadline = ({darkMode, addDeadline_action}) => {
       event.preventDefault();
       Notification("success", "Deadline Added!", "Your deadline has been added");
       resetForm();
+   }
+
+   const handleAddDeadline = () => {
+      const userAuth = currentUser.userAuth;
+      addDeadline_action(item, userAuth)
    }
 
    const props = useSpring({
@@ -105,7 +111,7 @@ const SetDeadline = ({darkMode, addDeadline_action}) => {
                />  
 
                {  course && date && description && time &&id?
-                  <button className = "button" type = "submit" onClick = {() => {item?addDeadline_action(item):alert("Please fill out the required information!")}}>
+                  <button className = "button" type = "submit" onClick = {() => {item?handleAddDeadline():alert("Please fill out the required information!")}}>
                      SUBMIT
                   </button>
                   :
@@ -119,11 +125,12 @@ const SetDeadline = ({darkMode, addDeadline_action}) => {
 }
 
 const MapStateToProps = createStructuredSelector({
-   darkMode: selectDarkMode
+   darkMode: selectDarkMode,
+   currentUser: selectCurrentUser,
 });
 
 const MapDispatchToProps = dispatch => ({
-   addDeadline_action: item => dispatch(addDeadline_action(item))
+   addDeadline_action: (item, userAuth) => dispatch(addDeadline_action(item, userAuth))
 });
 
 export default connect(MapStateToProps, MapDispatchToProps)(SetDeadline);

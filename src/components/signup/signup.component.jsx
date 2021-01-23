@@ -11,13 +11,14 @@ import './signup.styles.scss';
 
 const SignUp = ({darkMode, signUpStart}) => {
    const [userCredentials, setUserCredentials] = useState({
-      Name: '',
+      displayName: '',
       email: '',
       password: '',
-      confirmPassword: ''   
+      confirmPassword: '',
+      deadlines: []   
    });
 
-   const { Name, email, password, confirmPassword } = userCredentials;
+   const { displayName, email, password, confirmPassword, deadlines } = userCredentials;
 
    const handleSubmit = async event => {
       event.preventDefault(); 
@@ -25,7 +26,7 @@ const SignUp = ({darkMode, signUpStart}) => {
          alert('Passwords do not match!');
          return;
       }
-      signUpStart({email, password, Name});
+      signUpStart({email, password, displayName, deadlines});
    }
 
    const handleChange= event => {
@@ -41,8 +42,8 @@ const SignUp = ({darkMode, signUpStart}) => {
          <form className = "content-form" onSubmit = {handleSubmit} style = { darkMode?{backgroundColor: '#d4d1cb'}:{backgroundColor: 'white'}}>
             <Form
                type = 'text'
-               name = 'Name'
-               value = {Name}
+               name = 'displayName'
+               value = {displayName}
                onChange = {handleChange}
                label = 'Name:'
                required

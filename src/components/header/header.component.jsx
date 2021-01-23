@@ -8,6 +8,8 @@ import { toggleDarkMode } from '../../redux/settings/settings.actions';
 import { selectCurrentUser } from '../../redux/user/user.selectors';
 import { signOutStart } from '../../redux/user/user.actions';
 
+import { Notification } from '../notification/notification';
+
 import logo from '../../logo.svg';
 import "./header.styles.scss";
 
@@ -63,7 +65,12 @@ const Header = ({currentUser, toggleDarkMode, darkMode, signOutStart}) => {
                </Link>
                {
                   currentUser? 
-                     <div className  = "route-name" onClick = {signOutStart}>
+                     <div className  = "route-name" 
+                        onClick = {() => {
+                           signOutStart();
+                           Notification('info', 'Sign Out', 'Successfully signed out')
+                        }}
+                     >
                         Sign Out
                      </div>
                   :

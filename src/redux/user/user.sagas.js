@@ -20,6 +20,7 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData) {
       yield put(signInSuccess({ // put will send signInSuccess action to the regular redux flow 
             id: userSnapshot.id, 
             photoURL: userAuth.photoURL,
+            userAuth,
             ...userSnapshot.data()
          })
       );
@@ -72,10 +73,10 @@ export function* signOut() {
    }
 }
 
-export function* signUp({ payload: { email, password, Name } }) {
+export function* signUp({ payload: { email, password, displayName } }) {
    try {
       const { user } = yield auth.createUserWithEmailAndPassword(email, password);
-      yield put(signUpSuccess({user, additionalData: {Name}}));
+      yield put(signUpSuccess({user, additionalData: {displayName}}));
       // this saga fires signupsuccess action which another saga catches
    }
 

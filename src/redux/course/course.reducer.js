@@ -9,6 +9,9 @@ const INITIAL_STATE = {
    deadlines: [],
    sortFlag: false,
    editFlag: false,
+   collections: null,
+   isFetching: false,
+   errorMessage: null // for handling fetch_collections_failure
 }
 
 const CourseReducer = (state = INITIAL_STATE, action) => {
@@ -17,7 +20,7 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
       case (CourseActionTypes.ADD_DEADLINE):
          return {
             ...state,
-            deadlines: addDeadline(state.deadlines, action.payload)
+            deadlines: addDeadline(state.deadlines, action.payload[0])
          }
 
       case (CourseActionTypes.REMOVE_DEADLINE): 
@@ -55,6 +58,27 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
             ...state,
             deadlines: sortDeadlineDND(state.deadlines, action.payload),
          }
+
+
+      case CourseActionTypes.FETCH_COLLECTIONS_START:
+         return {
+            ...state,
+            isFetching: true
+         }
+
+      case CourseActionTypes.FETCH_COLLECTIONS_SUCCESS:
+         return{
+            ...state,
+            isFetching: false,
+            collections: action.payload
+         };
+
+      case CourseActionTypes.FETCH_COLLECTIONS_FAILURE:
+         return{
+            ...state,
+            isFetching: false,
+            errorMessage: action.payload
+         };
    
       default: 
          return state;
