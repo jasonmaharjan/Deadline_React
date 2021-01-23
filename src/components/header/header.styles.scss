@@ -16,7 +16,6 @@
  .App-header {
    padding: 1.25rem 0;
    display: flex;
-   justify-content: space-between;
    align-items: center;
    color: white;
 
@@ -24,7 +23,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 12vw;
+    margin-left: 7vw;
 
       &-icon {
         height: 5vmin;
@@ -42,11 +41,11 @@
       }  
 
   @media only screen and (max-width: $bp-small) {
-    margin-left: 6vw;
+    margin-left: 4vw;
   }
 
   @media only screen and (max-width: $bp-smallest) {
-    margin-left: 6vw;
+    margin-left: 3vw;
   }
   }
 
@@ -72,8 +71,21 @@
   }
 }
 
+.App-header-div {
+  display: flex;
+  margin: 0 8vw 0 auto;
+
+  @media only screen and (max-width: $bp-small) {
+    margin-right: 4vw;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    margin-right: 3vw;
+  }
+}
+
 .App-btn {
-  margin-right: 14vw;
+  margin-right: 2vw;
   width: 3.35rem;
   height: 1.75rem;
   border-radius: 5rem;
@@ -127,12 +139,19 @@
     }
     
   @media only screen and (max-width: $bp-small) {
-    margin-right: 8vw;
+    margin-right: 2vw;
   }
 
   @media only screen and (max-width: $bp-smallest) {
-    margin-right: 8vw;
+    margin-right: 2vw;
   }
+}
+
+.user-photo {
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  //margin-right: 15rem;
 }
 
  .route {
