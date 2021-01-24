@@ -24,14 +24,12 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!snapShot.exists) {   // create new userRef i.e, user data if a snapShot doesn't exist
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-    const deadlines = [];
 
     try {
       await userRef.set({
         displayName,
         email,
         createdAt,
-        deadlines,
         ...additionalData
       });
       return userRef;
@@ -59,7 +57,6 @@ export const addCollectionAndDocuments = async(collectionKey, objectsToAdd) => {
 }
 
 // basically get data from firestore and store it in reducer!!
-
 // for converting the collection snapshot array to an object
 export const convertCollectionSnapshotToMap = (collections) => {  
   const transformedCollection = collections.docs.map(doc => {

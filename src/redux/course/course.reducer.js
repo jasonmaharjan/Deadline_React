@@ -1,5 +1,5 @@
 import { CourseActionTypes } from './course.types';
-import { addDeadline } from './course.utils';
+//import { addDeadline } from './course.utils';
 import { removeDeadline } from './course.utils';
 import { editDeadline } from './course.utils';
 import { sortDeadline } from './course.utils';
@@ -9,18 +9,18 @@ const INITIAL_STATE = {
    deadlines: [],
    sortFlag: false,
    editFlag: false,
-   collections: null,
-   isFetching: false,
-   errorMessage: null // for handling fetch_collections_failure
+   errorMessage: null 
 }
 
 const CourseReducer = (state = INITIAL_STATE, action) => {
    switch(action.type) {
 
-      case (CourseActionTypes.ADD_DEADLINE):
+      case (CourseActionTypes.ADD_DEADLINE_SUCCESS):
          return {
             ...state,
-            deadlines: addDeadline(state.deadlines, action.payload[0])
+            //deadlines: addDeadline(state.deadlines, action.payload[0])
+            deadlines: action.payload,
+            errorMessage: null
          }
 
       case (CourseActionTypes.REMOVE_DEADLINE): 
@@ -58,27 +58,6 @@ const CourseReducer = (state = INITIAL_STATE, action) => {
             ...state,
             deadlines: sortDeadlineDND(state.deadlines, action.payload),
          }
-
-
-      case CourseActionTypes.FETCH_COLLECTIONS_START:
-         return {
-            ...state,
-            isFetching: true
-         }
-
-      case CourseActionTypes.FETCH_COLLECTIONS_SUCCESS:
-         return{
-            ...state,
-            isFetching: false,
-            collections: action.payload
-         };
-
-      case CourseActionTypes.FETCH_COLLECTIONS_FAILURE:
-         return{
-            ...state,
-            isFetching: false,
-            errorMessage: action.payload
-         };
    
       default: 
          return state;

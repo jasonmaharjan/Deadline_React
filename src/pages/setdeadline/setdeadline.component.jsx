@@ -53,13 +53,21 @@ const SetDeadline = ({darkMode, addDeadline_action, currentUser}) => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      Notification("success", "Deadline Added!", "Your deadline has been added");
+      if (currentUser) {
+         Notification("success", "Deadline Added!", "Your deadline has been added");
+      }
       resetForm();
    }
 
    const handleAddDeadline = () => {
-      const userAuth = currentUser.userAuth;
-      addDeadline_action(item, userAuth)
+      if (currentUser) {
+         const userAuth = currentUser.userAuth;
+         addDeadline_action(item, userAuth);
+      }
+      else {
+         Notification('info', 'Login', 'Please login to set deadlines!')
+      }
+      
    }
 
    const props = useSpring({
