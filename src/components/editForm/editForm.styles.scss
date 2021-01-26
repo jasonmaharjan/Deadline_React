@@ -1,26 +1,51 @@
-.edit-content {
-   margin: 1rem 20vw;
-   text-align: center;
-   padding: 1rem;
+@import "../../components//sass_variables/sass_variables.scss";
+.edit {
+   &-content{
+      padding: 0 20vw;
+      text-align: center;
+
+      @media only screen and (max-width: $bp-small) {
+         padding: 0 15vw;
+      }
+      
+      @media only screen and (max-width: $bp-smallest) {
+         padding: 0 8vw;
+      }
+
+      @media only screen and (max-width: $bp-mobile) {
+         padding: 0 5vw;
+      }
+   }
+
+   &-form {
+      display: grid;
+      background-color: rgb(212, 212, 212);
+      grid-auto-rows: repeat(4, 1fr);
+      grid-gap: 1rem;
+      padding: 4rem 5vw 4rem 5vw;
+      border-radius: 2rem;
+      border: 1px solid rgb(121, 121, 121);
+      box-shadow: 1px 2px 4px rgb(121, 121, 121);
+   }
 }  
-
-.form {
-   display: grid;
-   background-color: white;
-   grid-auto-rows: repeat(4, 1fr);
-   grid-gap: 2rem;
-   padding: 5rem;
-   border-radius: 2rem;
-   border: 1px solid rgb(121, 121, 121);
-   box-shadow: 1px 2px 4px rgb(121, 121, 121);
-}
-
 
 .remove_icon_ {
    position: absolute;
-   top: 10vh;
+   top: 11rem;
    right: 24vw;
    transition: all .1s;
+
+   @media only screen and (max-width: $bp-small) {
+      right: 20vw;
+   }
+
+   @media only screen and (max-width: $bp-smallest) {
+      right: 14vw;
+   }
+
+   @media only screen and (max-width: $bp-mobile) {
+      right: 10vw;
+   }
 
    &:hover {
       cursor: pointer;

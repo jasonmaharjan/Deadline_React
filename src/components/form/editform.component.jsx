@@ -2,7 +2,7 @@ import React from 'react';
 
 import './form.styles.scss';
 
-const Settings = ( {handleChange, label, ...otherProps} ) => (
+const Edit = ( {handleChange, label, ...otherProps} ) => (
    <div className = "group-edit">
          <label className = "form-label-edit"> 
             {label}
@@ -11,4 +11,4 @@ const Settings = ( {handleChange, label, ...otherProps} ) => (
    </div>
 )
 
-export default Settings;
+export default Edit;

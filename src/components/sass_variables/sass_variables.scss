@@ -13,7 +13,7 @@ $bp-largest: 68.75em; // 1100px
 $bp-large: 56.25em; // 900px
 $bp-small: 43.75em; // 700px
 $bp-smallest: 33.75em; // 540px
-$bp-mobile: 30em; // 480px
+$bp-mobile: 25em; // 400px
 
 // Reusable Styling
 %button-style {
@@ -21,8 +21,19 @@ $bp-mobile: 30em; // 480px
    border-radius: .5rem;
    padding: .5rem 1.5rem;
    font-size: 1rem;
-   margin: 0 auto 0.25rem;
+   margin: 1rem auto 0rem;
    transition: all 0.15s;
+
+   @media only screen and (max-width: $bp-small) {
+      font-size: 0.85rem;
+      padding: .5rem 1rem;
+      width: min-content;
+      margin: 1rem auto 0rem;
+   }
+
+   @media only screen and (max-width: $bp-smallest) {
+      font-size: 0.75rem;
+   }
 }
 
 .button {
@@ -56,5 +67,4 @@ $bp-mobile: 30em; // 480px
          outline-style: none;
       }
    }
-
 }

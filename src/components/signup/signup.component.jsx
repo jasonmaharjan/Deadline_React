@@ -37,7 +37,7 @@ const SignUp = ({darkMode, signUpStart}) => {
    return (
       <div style = { darkMode?{color: 'white'}:{color: 'black'}} className = 'sign-up'>
          <span className = 'sign-up-title'>Don't have an account?</span>
-         <span style = {{fontSize: '1.1rem', marginBottom: '2rem'}}>Sign up with your email and password.</span>
+         <span className = "sign-up-text">Sign up with your email and password.</span>
 
          <form className = "content-form" onSubmit = {handleSubmit} style = { darkMode?{backgroundColor: '#d4d1cb'}:{backgroundColor: 'white'}}>
             <Form
@@ -75,7 +75,7 @@ const SignUp = ({darkMode, signUpStart}) => {
                label = 'Confirm it:'
                required
             /> 
-            <button className = "button" type = 'submit'>Sign Up</button>
+            <button className = "button" type = 'submit'>Sign&nbsp;Up</button>
          </form>
       </div>
    )

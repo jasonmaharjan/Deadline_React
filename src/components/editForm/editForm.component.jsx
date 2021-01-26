@@ -8,7 +8,7 @@ import { selectEditFlag } from '../../redux/course/course.selectors';
 import { toggleEdit } from '../../redux/course/course.actions';
 import { Notification } from '../../components/notification/notification';
 
-import Form from '../../components/form/form.component';
+import Edit from '../../components/form/editform.component';
 import './editForm.styles.scss';
 import cross from "../../images/cross.svg";
 
@@ -63,11 +63,11 @@ const EditForm = ({item, toggleEdit, editFlag, editDeadline_action, userAuth}) =
    return (
       <section className = "edit-content">
          { editFlag?
-            <form className = "form" onSubmit = {handleSubmit} >
+            <form className = "edit-form" onSubmit = {handleSubmit} >
                <span className = "remove_icon_" onClick = {() => toggleEdit()}>
                   <img src = {cross} alt = "none" />
                </span> 
-               <Form 
+               <Edit 
                   name = "course"
                   type = "string"
                   value = {course}
@@ -76,7 +76,7 @@ const EditForm = ({item, toggleEdit, editFlag, editDeadline_action, userAuth}) =
                   required 
                />
 
-               <Form 
+               <Edit 
                   name = "date"
                   type = "date"
                   value = {date}
@@ -85,7 +85,7 @@ const EditForm = ({item, toggleEdit, editFlag, editDeadline_action, userAuth}) =
                   required 
                />  
 
-               <Form
+               <Edit
                   name = "time"
                   type = "time"
                   value = {time}
@@ -94,7 +94,7 @@ const EditForm = ({item, toggleEdit, editFlag, editDeadline_action, userAuth}) =
                   required
                />
 
-               <Form 
+               <Edit 
                   name = "description"
                   type = "textbox"
                   value = {description}

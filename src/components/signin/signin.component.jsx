@@ -25,7 +25,7 @@ const SignIn = ({darkMode, googleSignInStart, emailSignInStart}) => {
    return (
       <div style = { darkMode?{color: 'white'}:{color: 'black'}} className = 'sign-in'>
          <span className = "sign-in-title"> Already have an account?</span>
-         <span style = {{fontSize: '1.1rem', marginBottom: '1rem'}}>Sign in with your email and password</span>
+         <span className = "sign-in-text">Sign in with your email and password</span>
 
          <form className = "content-form" onSubmit = {handleSubmit} style = { darkMode?{backgroundColor: '#d4d1cb'}:{backgroundColor: 'white'}}>
             <Form
@@ -47,13 +47,13 @@ const SignIn = ({darkMode, googleSignInStart, emailSignInStart}) => {
             />
             <div className = "buttons">
                <button className = "button" type = "submit">
-                  Sign In 
+                  Sign&nbsp;In 
                </button>
 
                <button className = "button-google" type = "button"
                   onClick = {googleSignInStart}
                > 
-                  Sign in with Google
+                  Sign&nbsp;in&nbsp;with&nbsp;Google
                </button>
             </div>
          </form>

@@ -77,7 +77,7 @@ const SetDeadline = ({darkMode, addDeadline_action, currentUser}) => {
 
    return (
       <div className = {`${darkMode ? 'setDeadline-dark' : 'setDeadline'}`} style = {props}>
-         <h1 style = { darkMode?{color: 'white'}:{color: 'black'}} className = "title">
+         <h1 style = { darkMode?{color: 'white'}:{color: 'black'}} className = "title-set">
             Set your Deadline here:
          </h1>
          <section className = "content">

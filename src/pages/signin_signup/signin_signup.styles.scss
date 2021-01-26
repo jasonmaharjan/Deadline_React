@@ -3,6 +3,19 @@
 %default-style {
    padding: 20vh 14vw;
    min-height: 100vh;
+
+   
+   @media only screen and (max-width: $bp-large) {
+      padding: 8rem 8vw;
+   }
+
+   @media only screen and (max-width: $bp-small) {
+      padding: 8rem 2vw;
+   }
+
+   @media only screen and (max-width: $bp-mobile) {
+      padding: 8rem 1vw;
+   }
 }
 
 .signin {
@@ -16,18 +29,8 @@
 }
 
 .signin-signup {
-   font-weight: 100;
-   font-size: 1.25rem;
    margin-top: 2.5rem;
    display: flex;
    flex-direction: column;
    justify-content: space-around;
-
-   @media only screen and (max-width: $bp-small) {
-      font-size: 1.15rem;
-   }
-
-   @media only screen and (max-width: $bp-smallest) {
-      font-size: 1rem;
-   }
 }

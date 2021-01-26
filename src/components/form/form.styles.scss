@@ -1,14 +1,17 @@
 @import "../../components//sass_variables/sass_variables.scss";
 
-.group {
+%group-style {
    display: grid;
    grid-template-columns: 10vw 1fr;
    justify-content: flex-start;
    grid-gap: 2rem;
+}
 
+.group {
+   @extend %group-style;
+   
    @media only screen and (max-width: $bp-large) {
-      grid-template-columns: 15vw 1fr;
-      grid-gap: 1rem;
+      grid-template-columns: 18vw 1fr;
    }
 
    @media only screen and (max-width: $bp-small) {
@@ -19,20 +22,24 @@
       grid-template-columns: 20vw 1fr;
    }
 
-   &-settings {
-      display: grid;
-      grid-template-columns: 10vw 20vw;
-      justify-content: center;
-      grid-gap: 2rem;
+   &-edit {
+      @extend %group-style;
 
-      @media only screen and (max-width: $bp-large) {
-         justify-content: flex-start;
-         grid-template-columns: 15vw 20vw;
+      grid-template-columns: 8vw 1fr;
+
+      @media only screen and (max-width: $bp-small) {
+         grid-gap: 1rem;
+         grid-template-columns: 15vw 1fr;
+      }
+
+      @media only screen and (max-width: $bp-mobile) {
+         grid-gap: 1rem;
+         grid-template-columns: 20vw 1fr;
       }
    }
 }
 
-.form-label {
+%label-style {
    display: flex;
    justify-content: flex-end;
    align-items:center;
@@ -40,6 +47,10 @@
    font-size: 1.10rem;
    font-weight: 100;
    pointer-events: none;
+}
+
+.form-label {
+   @extend %label-style;
 
    @media only screen and (max-width: $bp-large) {
       font-size: 1rem;
@@ -49,14 +60,8 @@
       font-size: 0.85rem;
    }
 
-   &-settings {
-      display: flex;
-      justify-content: flex-end;
-      align-items:center;
-      color: rgb(0, 0, 0);
-      font-size: 1rem;
-      font-weight: 100;
-      pointer-events: none;
+   &-edit {
+      @extend %label-style;
 
       @media only screen and (max-width: $bp-large) {
          font-size: 0.85rem;
@@ -64,7 +69,7 @@
    }
 }
 
-.form-input {
+%input-style {
    background-color: $form-input-color;
    width: 35vw;
    color: rgb(82, 82, 82);
@@ -72,6 +77,10 @@
    padding: 10px 15px 10px 10px;
    border: none;
    border-radius: 0.5rem;
+}
+
+.form-input {
+   @extend %input-style;
 
    &:focus {
       outline-style: none;
@@ -82,15 +91,13 @@
       width: 100%;
    }
 
-   &-settings {
-      background-color: $form-input-color;
-      width: 100%;
-      color: rgb(82, 82, 82);
-      font-size: 0.90rem;
-      padding: 10px 15px 10px 10px;
-      border: none;
-      border-radius: 0.5rem;
+   &-edit {
+      @extend %input-style;
 
+      @media only screen and (max-width: $bp-small) {
+         width: 100%;
+      }
+      
       &:focus {
          outline-style: none;
       }

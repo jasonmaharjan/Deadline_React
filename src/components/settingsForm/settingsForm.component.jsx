@@ -46,7 +46,7 @@ const SettingsForm = ({ settings, settingsFlag, toggleSettings, editSettings_act
    return (
       <section className = "edit-content">
          { settingsFlag?
-            <form className = "form" onSubmit = {handleSubmit} >
+            <form className = "edit-form" onSubmit = {handleSubmit} >
                <span className = "remove_icon_" onClick = {() => toggleSettings()}>
                   <img src = {cross} alt = "none" />
                </span> 
