@@ -2,13 +2,16 @@ import React from 'react';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectDeadlines, selectEditFlag } from '../../redux/course/course.selectors';
+import { selectEditFlag, selectDeadlines } from '../../redux/course/course.selectors';
+
 import { toggleSort, sortDeadline_action, 
          removeDeadline_action, toggleEdit,
-         sortDeadlineDND_action, 
+         sortDeadlineDND_action, fetchDeadlinesData
           } from '../../redux/course/course.actions';
+
 import { selectSettings, selectSettingsFlag, selectDarkMode } from '../../redux/settings/settings.selectors';
 import { toggleSettings } from '../../redux/settings/settings.actions';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 import { useSpring } from 'react-spring';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
@@ -27,12 +30,12 @@ import settingsIcon from "../../images/settings.svg";
 import search from "../../images/searchButton.svg";
 
 import './viewdeadline.styles.scss';
+// NEED TO ADD A HOC SPINNER
+const ViewDeadline = ({currentUser, darkMode, deadlines, sortDeadline_action, toggleSort, toggleEdit, editFlag, 
+                        removeDeadline_action, sortDeadlineDND_action, settings, settingsFlag, toggleSettings }) => {
 
-const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, toggleEdit, editFlag, 
-                        removeDeadline_action, sortDeadlineDND_action, settings, settingsFlag, toggleSettings}) => {
    const [deadlineToEdit, setDeadlineToEdit] = useState(null);
    const [searchField, setSearchField] = useState('');
-
    const props = useSpring({
       from: {opacity: 0},
       opacity: 1
@@ -45,17 +48,25 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
       else return false
    }
 
+   const handleRemoveDeadline = (deadline) => {
+      if (currentUser) {
+         const userAuth = currentUser.userAuth;
+         removeDeadline_action(deadline, userAuth);
+      }
+   }
+
    const onSearchChange = event => {
       setSearchField(event.target.value);
    }
 
-   const filteredDeadlines = deadlines.filter(deadline => deadline.course.toLowerCase().includes(searchField.toLowerCase()) || deadline.description.toLowerCase().includes(searchField.toLowerCase()));
+   const filteredDeadlines =  deadlines.filter(deadline => deadline.course.toLowerCase().includes(searchField.toLowerCase()) || deadline.description.toLowerCase().includes(searchField.toLowerCase()));
+
    return(
       <div className = {`${darkMode ? 'view-dark' : 'view'}`} style = {props}>
          {
             editFlag && deadlineToEdit?
             <div className = "edit-form-overlay">
-               <EditForm item = {deadlineToEdit} />
+               <EditForm item = {deadlineToEdit} userAuth = {currentUser.userAuth} />
             </div>:null
          }
          {
@@ -175,7 +186,7 @@ const ViewDeadline = ({darkMode, deadlines, sortDeadline_action, toggleSort, tog
                                                    <span className = "remove_icon" 
                                                       onClick = {
                                                          () => {
-                                                            if (RemoveDeadline() === true) removeDeadline_action(deadline);
+                                                            if (RemoveDeadline() === true) handleRemoveDeadline(deadline);
                                                          }
                                                       }
                                                    ><img src = {cross} alt = "none" />
@@ -214,16 +225,18 @@ const MapStateToProps = createStructuredSelector({
    editFlag: selectEditFlag,
    settings: selectSettings,
    settingsFlag: selectSettingsFlag,
-   darkMode: selectDarkMode
+   darkMode: selectDarkMode,
+   currentUser: selectCurrentUser,
 })
 
 const MapDispatchToProps = dispatch => ({
+   fetchDeadlinesData: userAuth => dispatch(fetchDeadlinesData(userAuth)),
    toggleSort: () => dispatch(toggleSort()),
    toggleEdit: () => dispatch(toggleEdit()),
    toggleSettings: () => dispatch(toggleSettings()),
    sortDeadline_action: () => dispatch(sortDeadline_action()),
    sortDeadlineDND_action: result => dispatch(sortDeadlineDND_action(result)),
-   removeDeadline_action: item => dispatch(removeDeadline_action(item))
+   removeDeadline_action: (item, userAuth) => dispatch(removeDeadline_action(item, userAuth))
 })
 
 export default connect(MapStateToProps, MapDispatchToProps)(ViewDeadline);

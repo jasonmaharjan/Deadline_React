@@ -9,7 +9,7 @@ import UserReducer from './user/user.reducer';
 const persistConfig = {
    key: 'DeadlineTracker',
    storage,
-   whitelist: ['deadlines', 'settings'] // as we want 'deadlines' and 'settings' reducers to be persistent
+   whitelist: ['settings'] // as we want 'deadlines' and 'settings' reducers to be persistent
 }
 
 const rootReducer = combineReducers ({

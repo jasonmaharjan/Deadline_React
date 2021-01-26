@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { checkUserSession } from './redux/user/user.actions';
+
 import { selectCurrentUser } from './redux/user/user.selectors';
 
 import Header from './components/header/header.component';

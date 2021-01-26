@@ -1,7 +1,7 @@
 import { CourseActionTypes } from './course.types';
-//import { addDeadline } from './course.utils';
-import { removeDeadline } from './course.utils';
-import { editDeadline } from './course.utils';
+// import { addDeadline } from './course.utils';
+// import { removeDeadline } from './course.utils';
+// import { editDeadline } from './course.utils';
 import { sortDeadline } from './course.utils';
 import { sortDeadlineDND } from './course.utils';
 
@@ -14,25 +14,59 @@ const INITIAL_STATE = {
 
 const CourseReducer = (state = INITIAL_STATE, action) => {
    switch(action.type) {
-
+      
+      case CourseActionTypes.FETCH_DEADLINES_DATA_SUCCESS:
+         return {
+            ...state, 
+            deadlines: action.payload
+         }
+      
+      case CourseActionTypes.FETCH_DEADLINES_DATA_FAILURE:
+         return {
+            ...state, 
+            error: action.payload
+         }
+         
       case (CourseActionTypes.ADD_DEADLINE_SUCCESS):
          return {
             ...state,
-            //deadlines: addDeadline(state.deadlines, action.payload[0])
             deadlines: action.payload,
-            errorMessage: null
          }
 
-      case (CourseActionTypes.REMOVE_DEADLINE): 
+      case (CourseActionTypes.ADD_DEADLINE_FAILURE):
          return {
             ...state,
-            deadlines: removeDeadline(state.deadlines, action.payload)
+            error: action.payload
          }
 
-      case (CourseActionTypes.EDIT_DEADLINE): 
+      case (CourseActionTypes.REMOVE_DEADLINE_SUCCESS): 
          return {
             ...state,
-            deadlines: editDeadline(state.deadlines, action.payload)
+            deadlines: action.payload
+         }
+
+      case (CourseActionTypes.REMOVE_DEADLINE_FAILURE): 
+         return {
+            ...state,
+            errorMessage: action.payload
+         }
+
+      case (CourseActionTypes.REMOVE_DEADLINE_ON_SIGN_OUT): 
+         return {
+            ...state,
+            deadlines: []
+         }
+
+      case (CourseActionTypes.EDIT_DEADLINE_SUCCESS): 
+         return {
+            ...state,
+            deadlines: action.payload
+         }
+
+      case (CourseActionTypes.EDIT_DEADLINE_FAILURE): 
+         return {
+            ...state,
+            errorMessage: action.payload
          }
       
       case (CourseActionTypes.TOGGLE_SORT):

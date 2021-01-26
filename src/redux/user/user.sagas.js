@@ -4,6 +4,9 @@ import { signInSuccess, signInFailure } from './user.actions';
 import { signOutSuccess, signOutFailure } from './user.actions';
 import { signUpSuccess, signUpFailure } from './user.actions';
 
+import { fetchDeadlinesData } from '../course/course.actions';
+import { removeDeadlinesOnSignOut } from '../course/course.actions';
+
 import { 
    auth,
    googleProvider,
@@ -24,6 +27,8 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData) {
             ...userSnapshot.data()
          })
       );
+      // fetch data after successful signin
+      yield put(fetchDeadlinesData(userAuth));
    }
    catch(error) {
       yield put(signInFailure(error));
@@ -66,6 +71,7 @@ export function* isUserAuthenticated() {
 export function* signOut() {
    try {
       auth.signOut();
+      yield put(removeDeadlinesOnSignOut());
       yield put(signOutSuccess());
    }
    catch(error) {
@@ -121,10 +127,11 @@ export function* onSignInAfterSignUp() {
    yield takeLatest(UserActionTypes.SIGN_UP_SUCCESS, signInAfterSignUp);
 }
 
+
 // chain of action listeners(aka sagas)
 export function* userSagas() {
    yield all(
-      [ call(onGoogleSignInStart), call(onEmailSignInStart), 
+      [ call(onGoogleSignInStart), call(onEmailSignInStart),
        call(onCheckUserSession), call(onSignOutStart), call(onSignUp), call(onSignInAfterSignUp) ]
    );
 }

@@ -23,13 +23,37 @@ export const addDeadline_action_failure = error => ({
    payload: error
 });
 
-export const removeDeadline_action = item => ({
+export const removeDeadline_action = (item, userAuth) => ({
    type: CourseActionTypes.REMOVE_DEADLINE,
+   payload: [item, userAuth]
+});
+
+export const removeDeadline_action_success = item => ({
+   type: CourseActionTypes.REMOVE_DEADLINE_SUCCESS,
    payload: item
 });
 
-export const editDeadline_action = (item, updatedItem) => ({
+export const removeDeadline_action_failure = item => ({
+   type: CourseActionTypes.REMOVE_DEADLINE_FAILURE,
+   payload: item
+});
+
+export const removeDeadlinesOnSignOut = () => ({
+   type: CourseActionTypes.REMOVE_DEADLINE_ON_SIGN_OUT,
+});
+
+export const editDeadline_action = (item, updatedItem, userAuth) => ({
    type: CourseActionTypes.EDIT_DEADLINE,
+   payload: [item, updatedItem, userAuth]
+});
+
+export const editDeadline_action_success = (updatedItem) => ({
+   type: CourseActionTypes.EDIT_DEADLINE_SUCCESS,
+   payload: updatedItem
+});
+
+export const editDeadline_action_failure = (item, updatedItem) => ({
+   type: CourseActionTypes.EDIT_DEADLINE_FAILURE,
    payload: [item, updatedItem]
 });
 
@@ -42,16 +66,17 @@ export const sortDeadlineDND_action = item => ({
    payload: item
 });
 
-export const fetchCollectionsStart = () => ({
-   type: CourseActionTypes.FETCH_COLLECTIONS_START,
-});
+export const fetchDeadlinesData = (userAuth) => ({
+   type: CourseActionTypes.FETCH_DEADLINES_DATA,
+   payload: userAuth
+})
 
-export const fetchCollectionsSuccess = collectionsMap => ({
-   type: CourseActionTypes.FETCH_COLLECTIONS_SUCCESS,
-   payload: collectionsMap
-});
+export const fetchDeadlinesDataSuccess = (item) => ({
+   type: CourseActionTypes.FETCH_DEADLINES_DATA_SUCCESS,
+   payload: item
+})
 
-export const fetchCollectionsFailure = errorMessage => ({
-   type: CourseActionTypes.FETCH_COLLECTIONS_FAILURE,
-   payload: errorMessage
-});
+export const fetchDeadlinesDataFailure = (error) => ({
+   type: CourseActionTypes.FETCH_DEADLINES_DATA_FAILURE,
+   payload: error
+})

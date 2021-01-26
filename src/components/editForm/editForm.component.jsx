@@ -12,7 +12,7 @@ import Form from '../../components/form/form.component';
 import './editForm.styles.scss';
 import cross from "../../images/cross.svg";
 
-const EditForm = ({item, toggleEdit, editFlag, editDeadline_action}) => {
+const EditForm = ({item, toggleEdit, editFlag, editDeadline_action, userAuth}) => {
    const [course, setCourse] = useState(item.course);
    const [date, setDate] = useState(item.date);
    const [time, setTime] = useState(item.time);
@@ -105,7 +105,7 @@ const EditForm = ({item, toggleEdit, editFlag, editDeadline_action}) => {
 
                <button className = "button" type = "submit" onClick = {() => 
                      {
-                        updated_item ? editDeadline_action(item, updated_item)
+                        updated_item ? editDeadline_action(item, updated_item, userAuth)
                         :
                         alert("Please fill out the required information!")
                      }
@@ -124,7 +124,7 @@ const MapStateToProps = createStructuredSelector({
 
 const MapDispatchToProps = dispatch => ({
    toggleEdit: () => dispatch(toggleEdit()),
-   editDeadline_action: (item, updatedItem) => dispatch(editDeadline_action(item, updatedItem))
+   editDeadline_action: (item, updatedItem, userAuth) => dispatch(editDeadline_action(item, updatedItem, userAuth))
 })
 
 export default connect(MapStateToProps, MapDispatchToProps)(EditForm);
