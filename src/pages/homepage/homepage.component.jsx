@@ -13,9 +13,10 @@ const HomePage = ({darkMode}) => {
 
    return(
       <animated.div className = {`${darkMode ? 'homepage-dark' : 'homepage'}`} style = {props}>
-            <h1 style = { darkMode?{color: 'white'}:{color: 'black'}} className = "title">
+            <p style = { darkMode?{color: 'white'}:{color: 'black'}} className = "title">
                Deadline Tracker is a simple React app which keeps you informed of your pending works.
-            </h1>
+
+            </p>
       </animated.div>
 )};
 

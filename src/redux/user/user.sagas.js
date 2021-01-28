@@ -3,8 +3,8 @@ import { UserActionTypes } from './user.types';
 import { signInSuccess, signInFailure } from './user.actions';
 import { signOutSuccess, signOutFailure } from './user.actions';
 import { signUpSuccess, signUpFailure } from './user.actions';
+import { noUserAuth } from './user.actions';
 
-import { fetchDeadlinesData } from '../course/course.actions';
 import { removeDeadlinesOnSignOut } from '../course/course.actions';
 
 import { 
@@ -27,8 +27,6 @@ export function* getSnapshotFromUserAuth(userAuth, additionalData) {
             ...userSnapshot.data()
          })
       );
-      // fetch data after successful signin
-      yield put(fetchDeadlinesData(userAuth));
    }
    catch(error) {
       yield put(signInFailure(error));
@@ -61,7 +59,11 @@ export function* isUserAuthenticated() {
       if (userAuth) {
          yield call(getSnapshotFromUserAuth, userAuth);
       }
-      else return;      
+      else {
+         yield put(noUserAuth());
+         return
+
+      };      
    }
    catch(error) {
       yield put(signInFailure(error));

@@ -11,3 +11,8 @@ export const selectDeadlines = createSelector (
    [selectUser],
    user => user.deadlines
 );
+
+export const selectIsUserFetching = createSelector (
+   [selectUser],
+   user => user.isUserFetching
+)

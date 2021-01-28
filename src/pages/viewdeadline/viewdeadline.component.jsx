@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectEditFlag, selectDeadlines } from '../../redux/course/course.selectors';
@@ -30,9 +30,16 @@ import settingsIcon from "../../images/settings.svg";
 import search from "../../images/searchButton.svg";
 
 import './viewdeadline.styles.scss';
-// NEED TO ADD A HOC SPINNER
+
 const ViewDeadline = ({currentUser, darkMode, deadlines, sortDeadline_action, toggleSort, toggleEdit, editFlag, 
                         removeDeadline_action, sortDeadlineDND_action, settings, settingsFlag, toggleSettings }) => {
+   
+   useEffect((currentUser) => {
+      if (currentUser) {
+         console.log(currentUser);
+         fetchDeadlinesData(currentUser.userAuth);
+      }
+   }, [currentUser]);
 
    const [deadlineToEdit, setDeadlineToEdit] = useState(null);
    const [searchField, setSearchField] = useState('');

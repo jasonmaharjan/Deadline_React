@@ -6,6 +6,12 @@ export const checkUserSession = () => ({
    type: UserActionTypes.CHECK_USER_SESSION
 });
 
+// Action to falsify userFetching value
+export const noUserAuth = () => ({
+   type: UserActionTypes.NO_USER_AUTH
+});
+
+
 // sign in actions
 export const googleSignInStart = () => ({
    type: UserActionTypes.GOOGLE_SIGN_IN_START

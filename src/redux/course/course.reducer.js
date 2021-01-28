@@ -9,22 +9,31 @@ const INITIAL_STATE = {
    deadlines: [],
    sortFlag: false,
    editFlag: false,
-   errorMessage: null 
+   errorMessage: null,
+   isFetching: false,
 }
 
 const CourseReducer = (state = INITIAL_STATE, action) => {
    switch(action.type) {
+
+      case CourseActionTypes.FETCH_DEADLINES_DATA:
+         return {
+            ...state, 
+            isFetching: true
+         }
       
       case CourseActionTypes.FETCH_DEADLINES_DATA_SUCCESS:
          return {
             ...state, 
-            deadlines: action.payload
+            deadlines: action.payload,
+            isFetching: false
          }
       
       case CourseActionTypes.FETCH_DEADLINES_DATA_FAILURE:
          return {
             ...state, 
-            error: action.payload
+            error: action.payload,
+            isFetching: false
          }
          
       case (CourseActionTypes.ADD_DEADLINE_SUCCESS):
