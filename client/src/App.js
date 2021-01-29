@@ -18,6 +18,8 @@ import SignInSignUp from './pages/signin_signup/signin_signup.component';
 
 import WithSpinner from './components/with-spinner/with-spinner.component';
 
+import axios from 'axios'; 
+
 import './App.scss';
 
 const App = ({ checkUserSession, currentUser }) => {

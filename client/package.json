@@ -2,11 +2,13 @@
   "name": "assignment_tracker",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.10.0",
+    "axios": "^0.21.1",
     "firebase": "^8.2.4",
     "firebase-admin": "^9.4.2",
     "lodash.debounce": "^4.0.8",
