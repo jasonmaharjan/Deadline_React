@@ -46,14 +46,11 @@ const Header = ({currentUser, toggleDarkMode, darkMode, signOutStart}) => {
                         currentUser.photoURL ?
                               <div className = "user-section">
                                  <img src = {currentUser.photoURL} alt = "User" className = "user-section-photo" />
-                                 <span className = "user-section-name">{currentUser.displayName}</span>
                               </div>
                         :
                               <div className = "user-section">
                                  <img src = {defaultPhoto} alt = "default" className = "user-section-photo" />
-                                 <span className = "user-section-name">{currentUser.displayName}</span>
-                              </div>
-                              
+                              </div>  
                      :
                      null
                   }
