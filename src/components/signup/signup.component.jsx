@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectDarkMode } from '../../redux/settings/settings.selectors';
 import { signUpStart } from '../../redux/user/user.actions';
+import { Notification } from '../../components/notification/notification';
 
 import Form from "../../components/form/form.component";
 
 import './signup.styles.scss';
 
 const SignUp = ({darkMode, signUpStart}) => {
+
    const [userCredentials, setUserCredentials] = useState({
       displayName: '',
       email: '',
@@ -23,7 +25,7 @@ const SignUp = ({darkMode, signUpStart}) => {
    const handleSubmit = async event => {
       event.preventDefault(); 
       if (password !== confirmPassword) {
-         alert('Passwords do not match!');
+         Notification('error', 'auth/password error', 'Passwords do not match')
          return;
       }
       signUpStart({email, password, displayName, deadlines});
@@ -81,7 +83,7 @@ const SignUp = ({darkMode, signUpStart}) => {
    )
 }
 const MapStateToProps = createStructuredSelector({
-   darkMode: selectDarkMode
+   darkMode: selectDarkMode,
 });
 
 const MapDispatchToProps = dispatch => ({

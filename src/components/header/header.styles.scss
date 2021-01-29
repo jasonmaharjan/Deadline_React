@@ -86,7 +86,7 @@
 }
 
 .App-btn {
-  margin-right: 2vw;
+  margin-right: 1vw;
   width: 3.35rem;
   height: 1.75rem;
   border-radius: 5rem;
@@ -148,11 +148,21 @@
   }
 }
 
-.user-photo {
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  //margin-right: 15rem;
+.user-section {
+  display: flex;
+  align-items: center;
+  margin-right: 1vw;
+
+  &-photo {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    margin-right: .25rem;
+  }
+
+  &-name {
+    font-size: 0.75rem;
+  }
 }
 
  .route {

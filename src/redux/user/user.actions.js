@@ -11,6 +11,9 @@ export const noUserAuth = () => ({
    type: UserActionTypes.NO_USER_AUTH
 });
 
+export const resetError = () => ({
+   type: UserActionTypes.RESET_ERROR
+});
 
 // sign in actions
 export const googleSignInStart = () => ({

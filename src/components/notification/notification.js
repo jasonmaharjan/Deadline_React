@@ -4,7 +4,7 @@ export const Notification = (type, message, description) => {
    notification[type]({
       message, 
       description,
-      duration: 3,
+      duration: 2,
       placement: 'topRight'
    })
 }

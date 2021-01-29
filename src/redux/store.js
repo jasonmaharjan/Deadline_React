@@ -10,9 +10,11 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middlewares = [sagaMiddleware];
 
-if (process.env.NODE_ENV === 'development') { // create-react-app sets to development by default
+/*if (process.env.NODE_ENV === 'development') { // create-react-app sets to development by default
    middlewares.push(logger);
-}
+}*/
+
+middlewares.push(logger);
 
 export const store = createStore(rootReducer, applyMiddleware(...middlewares));
 

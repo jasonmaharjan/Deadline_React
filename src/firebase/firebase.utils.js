@@ -30,6 +30,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName,
         email,
         createdAt,
+        deadlines: [],
         ...additionalData
       });
       return userRef;
