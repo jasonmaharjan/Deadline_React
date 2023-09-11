@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/Deadline_Tracker/static/css/main.747398ce.chunk.css",
+    "main.js": "/Deadline_Tracker/static/js/main.44eba62a.chunk.js",
+    "main.js.map": "/Deadline_Tracker/static/js/main.44eba62a.chunk.js.map",
+    "runtime-main.js": "/Deadline_Tracker/static/js/runtime-main.82d22293.js",
+    "runtime-main.js.map": "/Deadline_Tracker/static/js/runtime-main.82d22293.js.map",
+    "static/css/2.324ccd6c.chunk.css": "/Deadline_Tracker/static/css/2.324ccd6c.chunk.css",
+    "static/js/2.4494d60d.chunk.js": "/Deadline_Tracker/static/js/2.4494d60d.chunk.js",
+    "static/js/2.4494d60d.chunk.js.map": "/Deadline_Tracker/static/js/2.4494d60d.chunk.js.map",
+    "index.html": "/Deadline_Tracker/index.html",
+    "precache-manifest.cde585bcef0f5a71535ca018046029f8.js": "/Deadline_Tracker/precache-manifest.cde585bcef0f5a71535ca018046029f8.js",
+    "service-worker.js": "/Deadline_Tracker/service-worker.js",
+    "static/css/2.324ccd6c.chunk.css.map": "/Deadline_Tracker/static/css/2.324ccd6c.chunk.css.map",
+    "static/css/main.747398ce.chunk.css.map": "/Deadline_Tracker/static/css/main.747398ce.chunk.css.map",
+    "static/js/2.4494d60d.chunk.js.LICENSE.txt": "/Deadline_Tracker/static/js/2.4494d60d.chunk.js.LICENSE.txt",
+    "static/js/main.44eba62a.chunk.js.LICENSE.txt": "/Deadline_Tracker/static/js/main.44eba62a.chunk.js.LICENSE.txt",
+    "static/media/cross.svg": "/Deadline_Tracker/static/media/cross.3d87305d.svg",
+    "static/media/edit.svg": "/Deadline_Tracker/static/media/edit.dddf0c8b.svg",
+    "static/media/logo.svg": "/Deadline_Tracker/static/media/logo.5d5d9eef.svg",
+    "static/media/red_warning.svg": "/Deadline_Tracker/static/media/red_warning.81f46e26.svg",
+    "static/media/searchButton.svg": "/Deadline_Tracker/static/media/searchButton.619ca765.svg",
+    "static/media/settings.svg": "/Deadline_Tracker/static/media/settings.90f60d0a.svg",
+    "static/media/sort.svg": "/Deadline_Tracker/static/media/sort.28ac7e4d.svg",
+    "static/media/yellow_warning.svg": "/Deadline_Tracker/static/media/yellow_warning.7cca510b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.82d22293.js",
+    "static/css/2.324ccd6c.chunk.css",
+    "static/js/2.4494d60d.chunk.js",
+    "static/css/main.747398ce.chunk.css",
+    "static/js/main.44eba62a.chunk.js"
+  ]
+}
